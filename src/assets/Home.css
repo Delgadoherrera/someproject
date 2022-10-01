@@ -1,0 +1,11 @@
+.fotoPrincipal {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100%;
+    position: fixed !important;
+    bottom: 1px; 
+    z-index: -3;
+    transform: scaleX(-1);
+    opacity: 80%;
+
+}

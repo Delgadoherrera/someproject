@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "telefono": "1158022002",
+            "name": "deconocido",
+            "descripcion": "Ortopedia Alemana",
+            "price": 72900,
+            "direccion": "Montevideo 879",
+            "inventoryStatus": "Abonado",
+            "nombreFamiliar": "Sra. Monica"
+        },
+        {
+            "id": "2",
+            "telefono": "1168733288",
+            "name": "Clorinda",
+            "descripcion": "Villa Adelina",
+            "price": 79800,
+            "direccion": "Fray Calletano Rodriguez 1485 PB",
+            "inventoryStatus": "Abonado",
+            "nombreFamiliar": "Sra. Iris"
+        },
+        {
+            "id": "3",
+            "telefono": "1162735162",
+            "name": "Teresa De Marco",
+            "descripcion": "Mataderos",
+            "price": 103800,
+            "direccion": "Chascomus 4684",
+            "inventoryStatus": "Abonado",
+            "nombreFamiliar": "Sr. Natalio Rubino"
+        },
+        {
+            "id": "4",
+            "telefono": "1131821315",
+            "name": "desconocido",
+            "descripcion": "Mataderos",
+            "price": 60000,
+            "direccion": "Av. Corrientes 4894 9A ",
+            "inventoryStatus": "Abonado",
+            "nombreFamiliar": "Sra. Marta Bocian"
+        }
+    ]
+}
+    

@@ -1,0 +1,1320 @@
+{
+    "data": [
+        {
+            "code": "BSA",
+            "name": "25 de Mayo"
+        },
+        {
+            "code": "BSA",
+            "name": "3 de febrero"
+        },
+        {
+            "code": "BSA",
+            "name": "A. Alsina"
+        },
+        {
+            "code": "BSA",
+            "name": "A. Gonzáles Cháves"
+        },
+        {
+            "code": "BSA",
+            "name": "Aguas Verdes"
+        },
+        {
+            "code": "BSA",
+            "name": "Alberti"
+        },
+        {
+            "code": "BSA",
+            "name": "Arrecifes"
+        },
+        {
+            "code": "BSA",
+            "name": "Ayacucho"
+        },
+        {
+            "code": "BSA",
+            "name": "Azul"
+        },
+        {
+            "code": "BSA",
+            "name": "Bahía Blanca"
+        },
+        {
+            "code": "BSA",
+            "name": "Balcarce"
+        },
+        {
+            "code": "BSA",
+            "name": "Baradero"
+        },
+        {
+            "code": "BSA",
+            "name": "Benito Juárez"
+        },
+        {
+            "code": "BSA",
+            "name": "Berisso"
+        },
+        {
+            "code": "BSA",
+            "name": "Bolívar"
+        },
+        {
+            "code": "BSA",
+            "name": "Bragado"
+        },
+        {
+            "code": "BSA",
+            "name": "Brandsen"
+        },
+        {
+            "code": "BSA",
+            "name": "Campana"
+        },
+        {
+            "code": "BSA",
+            "name": "Cañuelas"
+        },
+        {
+            "code": "BSA",
+            "name": "Capilla del Señor"
+        },
+        {
+            "code": "BSA",
+            "name": "Capitán Sarmiento"
+        },
+        {
+            "code": "BSA",
+            "name": "Carapachay"
+        },
+        {
+            "code": "BSA",
+            "name": "Carhue"
+        },
+        {
+            "code": "BSA",
+            "name": "Cariló"
+        },
+        {
+            "code": "BSA",
+            "name": "Carlos Casares"
+        },
+        {
+            "code": "BSA",
+            "name": "Carlos Tejedor"
+        },
+        {
+            "code": "BSA",
+            "name": "Carmen de Areco"
+        },
+        {
+            "code": "BSA",
+            "name": "Carmen de Patagones"
+        },
+        {
+            "code": "BSA",
+            "name": "Castelli"
+        },
+        {
+            "code": "BSA",
+            "name": "Chacabuco"
+        },
+        {
+            "code": "BSA",
+            "name": "Chascomús"
+        },
+        {
+            "code": "BSA",
+            "name": "Chivilcoy"
+        },
+        {
+            "code": "BSA",
+            "name": "Colón"
+        },
+        {
+            "code": "BSA",
+            "name": "Coronel Dorrego"
+        },
+        {
+            "code": "BSA",
+            "name": "Coronel Pringles"
+        },
+        {
+            "code": "BSA",
+            "name": "Coronel Rosales"
+        },
+        {
+            "code": "BSA",
+            "name": "Coronel Suarez"
+        },
+        {
+            "code": "BSA",
+            "name": "Costa Azul"
+        },
+        {
+            "code": "BSA",
+            "name": "Costa Chica"
+        },
+        {
+            "code": "BSA",
+            "name": "Costa del Este"
+        },
+        {
+            "code": "BSA",
+            "name": "Costa Esmeralda"
+        },
+        {
+            "code": "BSA",
+            "name": "Daireaux"
+        },
+        {
+            "code": "BSA",
+            "name": "Darregueira"
+        },
+        {
+            "code": "BSA",
+            "name": "Del Viso"
+        },
+        {
+            "code": "BSA",
+            "name": "Dolores"
+        },
+        {
+            "code": "BSA",
+            "name": "Don Torcuato"
+        },
+        {
+            "code": "BSA",
+            "name": "Ensenada"
+        },
+        {
+            "code": "BSA",
+            "name": "Escobar"
+        },
+        {
+            "code": "BSA",
+            "name": "Exaltación de la Cruz"
+        },
+        {
+            "code": "BSA",
+            "name": "Florentino Ameghino"
+        },
+        {
+            "code": "BSA",
+            "name": "Garín"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Alvarado"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Alvear"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Arenales"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Belgrano"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Guido"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Lamadrid"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Las Heras"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Lavalle"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Madariaga"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Pacheco"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Paz"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Pinto"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Pueyrredón"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Rodríguez"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Viamonte"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Villegas"
+        },
+        {
+            "code": "BSA",
+            "name": "Guaminí"
+        },
+        {
+            "code": "BSA",
+            "name": "Guernica"
+        },
+        {
+            "code": "BSA",
+            "name": "Hipólito Yrigoyen"
+        },
+        {
+            "code": "BSA",
+            "name": "Ing. Maschwitz"
+        },
+        {
+            "code": "BSA",
+            "name": "Junín"
+        },
+        {
+            "code": "BSA",
+            "name": "La Plata"
+        },
+        {
+            "code": "BSA",
+            "name": "Laprida"
+        },
+        {
+            "code": "BSA",
+            "name": "Las Flores"
+        },
+        {
+            "code": "BSA",
+            "name": "Las Toninas"
+        },
+        {
+            "code": "BSA",
+            "name": "Leandro N. Alem"
+        },
+        {
+            "code": "BSA",
+            "name": "Lincoln"
+        },
+        {
+            "code": "BSA",
+            "name": "Loberia"
+        },
+        {
+            "code": "BSA",
+            "name": "Lobos"
+        },
+        {
+            "code": "BSA",
+            "name": "Los Cardales"
+        },
+        {
+            "code": "BSA",
+            "name": "Los Toldos"
+        },
+        {
+            "code": "BSA",
+            "name": "Lucila del Mar"
+        },
+        {
+            "code": "BSA",
+            "name": "Luján"
+        },
+        {
+            "code": "BSA",
+            "name": "Magdalena"
+        },
+        {
+            "code": "BSA",
+            "name": "Maipú"
+        },
+        {
+            "code": "BSA",
+            "name": "Mar Chiquita"
+        },
+        {
+            "code": "BSA",
+            "name": "Mar de Ajó"
+        },
+        {
+            "code": "BSA",
+            "name": "Mar de las Pampas"
+        },
+        {
+            "code": "BSA",
+            "name": "Mar del Plata"
+        },
+        {
+            "code": "BSA",
+            "name": "Mar del Tuyú"
+        },
+        {
+            "code": "BSA",
+            "name": "Marcos Paz"
+        },
+        {
+            "code": "BSA",
+            "name": "Mercedes"
+        },
+        {
+            "code": "BSA",
+            "name": "Miramar"
+        },
+        {
+            "code": "BSA",
+            "name": "Monte"
+        },
+        {
+            "code": "BSA",
+            "name": "Monte Hermoso"
+        },
+        {
+            "code": "BSA",
+            "name": "Munro"
+        },
+        {
+            "code": "BSA",
+            "name": "Navarro"
+        },
+        {
+            "code": "BSA",
+            "name": "Necochea"
+        },
+        {
+            "code": "BSA",
+            "name": "Olavarría"
+        },
+        {
+            "code": "BSA",
+            "name": "Partido de la Costa"
+        },
+        {
+            "code": "BSA",
+            "name": "Pehuajó"
+        },
+        {
+            "code": "BSA",
+            "name": "Pellegrini"
+        },
+        {
+            "code": "BSA",
+            "name": "Pergamino"
+        },
+        {
+            "code": "BSA",
+            "name": "Pigüé"
+        },
+        {
+            "code": "BSA",
+            "name": "Pila"
+        },
+        {
+            "code": "BSA",
+            "name": "Pilar"
+        },
+        {
+            "code": "BSA",
+            "name": "Pinamar"
+        },
+        {
+            "code": "BSA",
+            "name": "Pinar del Sol"
+        },
+        {
+            "code": "BSA",
+            "name": "Polvorines"
+        },
+        {
+            "code": "BSA",
+            "name": "Pte. Perón"
+        },
+        {
+            "code": "BSA",
+            "name": "Puán"
+        },
+        {
+            "code": "BSA",
+            "name": "Punta Indio"
+        },
+        {
+            "code": "BSA",
+            "name": "Ramallo"
+        },
+        {
+            "code": "BSA",
+            "name": "Rauch"
+        },
+        {
+            "code": "BSA",
+            "name": "Rivadavia"
+        },
+        {
+            "code": "BSA",
+            "name": "Rojas"
+        },
+        {
+            "code": "BSA",
+            "name": "Roque Pérez"
+        },
+        {
+            "code": "BSA",
+            "name": "Saavedra"
+        },
+        {
+            "code": "BSA",
+            "name": "Saladillo"
+        },
+        {
+            "code": "BSA",
+            "name": "Salliqueló"
+        },
+        {
+            "code": "BSA",
+            "name": "Salto"
+        },
+        {
+            "code": "BSA",
+            "name": "San Andrés de Giles"
+        },
+        {
+            "code": "BSA",
+            "name": "San Antonio de Areco"
+        },
+        {
+            "code": "BSA",
+            "name": "San Antonio de Padua"
+        },
+        {
+            "code": "BSA",
+            "name": "San Bernardo"
+        },
+        {
+            "code": "BSA",
+            "name": "San Cayetano"
+        },
+        {
+            "code": "BSA",
+            "name": "San Clemente del Tuyú"
+        },
+        {
+            "code": "BSA",
+            "name": "San Nicolás"
+        },
+        {
+            "code": "BSA",
+            "name": "San Pedro"
+        },
+        {
+            "code": "BSA",
+            "name": "San Vicente"
+        },
+        {
+            "code": "BSA",
+            "name": "Santa Teresita"
+        },
+        {
+            "code": "BSA",
+            "name": "Suipacha"
+        },
+        {
+            "code": "BSA",
+            "name": "Tandil"
+        },
+        {
+            "code": "BSA",
+            "name": "Tapalqué"
+        },
+        {
+            "code": "BSA",
+            "name": "Tordillo"
+        },
+        {
+            "code": "BSA",
+            "name": "Tornquist"
+        },
+        {
+            "code": "BSA",
+            "name": "Trenque Lauquen"
+        },
+        {
+            "code": "BSA",
+            "name": "Tres Lomas"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Gesell"
+        },
+        {
+            "code": "BSA",
+            "name": "Villarino"
+        },
+        {
+            "code": "BSA",
+            "name": "Zárate"
+        },
+        {
+            "code": "BSA",
+            "name": "11 de Septiembre"
+        },
+        {
+            "code": "BSA",
+            "name": "20 de Junio"
+        },
+        {
+            "code": "BSA",
+            "name": "25 de Mayo"
+        },
+        {
+            "code": "BSA",
+            "name": "Acassuso"
+        },
+        {
+            "code": "BSA",
+            "name": "Adrogué"
+        },
+        {
+            "code": "BSA",
+            "name": "Aldo Bonzi"
+        },
+        {
+            "code": "BSA",
+            "name": "Área Reserva Cinturón Ecológico"
+        },
+        {
+            "code": "BSA",
+            "name": "Avellaneda"
+        },
+        {
+            "code": "BSA",
+            "name": "Banfield"
+        },
+        {
+            "code": "BSA",
+            "name": "Barrio Parque"
+        },
+        {
+            "code": "BSA",
+            "name": "Barrio Santa Teresita"
+        },
+        {
+            "code": "BSA",
+            "name": "Beccar"
+        },
+        {
+            "code": "BSA",
+            "name": "Bella Vista"
+        },
+        {
+            "code": "BSA",
+            "name": "Berazategui"
+        },
+        {
+            "code": "BSA",
+            "name": "Bernal Este"
+        },
+        {
+            "code": "BSA",
+            "name": "Bernal Oeste"
+        },
+        {
+            "code": "BSA",
+            "name": "Billinghurst"
+        },
+        {
+            "code": "BSA",
+            "name": "Boulogne"
+        },
+        {
+            "code": "BSA",
+            "name": "Burzaco"
+        },
+        {
+            "code": "BSA",
+            "name": "Carapachay"
+        },
+        {
+            "code": "BSA",
+            "name": "Caseros"
+        },
+        {
+            "code": "BSA",
+            "name": "Castelar"
+        },
+        {
+            "code": "BSA",
+            "name": "Churruca"
+        },
+        {
+            "code": "BSA",
+            "name": "Ciudad Evita"
+        },
+        {
+            "code": "BSA",
+            "name": "Ciudad Madero"
+        },
+        {
+            "code": "BSA",
+            "name": "Ciudadela"
+        },
+        {
+            "code": "BSA",
+            "name": "Claypole"
+        },
+        {
+            "code": "BSA",
+            "name": "Crucecita"
+        },
+        {
+            "code": "BSA",
+            "name": "Dock Sud"
+        },
+        {
+            "code": "BSA",
+            "name": "Don Bosco"
+        },
+        {
+            "code": "BSA",
+            "name": "Don Orione"
+        },
+        {
+            "code": "BSA",
+            "name": "El Jagüel"
+        },
+        {
+            "code": "BSA",
+            "name": "El Libertador"
+        },
+        {
+            "code": "BSA",
+            "name": "El Palomar"
+        },
+        {
+            "code": "BSA",
+            "name": "El Tala"
+        },
+        {
+            "code": "BSA",
+            "name": "El Trébol"
+        },
+        {
+            "code": "BSA",
+            "name": "Ezeiza"
+        },
+        {
+            "code": "BSA",
+            "name": "Ezpeleta"
+        },
+        {
+            "code": "BSA",
+            "name": "Florencio Varela"
+        },
+        {
+            "code": "BSA",
+            "name": "Florida"
+        },
+        {
+            "code": "BSA",
+            "name": "Francisco Álvarez"
+        },
+        {
+            "code": "BSA",
+            "name": "Gerli"
+        },
+        {
+            "code": "BSA",
+            "name": "Glew"
+        },
+        {
+            "code": "BSA",
+            "name": "González Catán"
+        },
+        {
+            "code": "BSA",
+            "name": "Gral. Lamadrid"
+        },
+        {
+            "code": "BSA",
+            "name": "Grand Bourg"
+        },
+        {
+            "code": "BSA",
+            "name": "Gregorio de Laferrere"
+        },
+        {
+            "code": "BSA",
+            "name": "Guillermo Enrique Hudson"
+        },
+        {
+            "code": "BSA",
+            "name": "Haedo"
+        },
+        {
+            "code": "BSA",
+            "name": "Hurlingham"
+        },
+        {
+            "code": "BSA",
+            "name": "Ing. Sourdeaux"
+        },
+        {
+            "code": "BSA",
+            "name": "Isidro Casanova"
+        },
+        {
+            "code": "BSA",
+            "name": "Ituzaingó"
+        },
+        {
+            "code": "BSA",
+            "name": "José C. Paz"
+        },
+        {
+            "code": "BSA",
+            "name": "José Ingenieros"
+        },
+        {
+            "code": "BSA",
+            "name": "José Marmol"
+        },
+        {
+            "code": "BSA",
+            "name": "La Lucila"
+        },
+        {
+            "code": "BSA",
+            "name": "La Reja"
+        },
+        {
+            "code": "BSA",
+            "name": "La Tablada"
+        },
+        {
+            "code": "BSA",
+            "name": "Lanús"
+        },
+        {
+            "code": "BSA",
+            "name": "Llavallol"
+        },
+        {
+            "code": "BSA",
+            "name": "Loma Hermosa"
+        },
+        {
+            "code": "BSA",
+            "name": "Lomas de Zamora"
+        },
+        {
+            "code": "BSA",
+            "name": "Lomas del Millón"
+        },
+        {
+            "code": "BSA",
+            "name": "Lomas del Mirador"
+        },
+        {
+            "code": "BSA",
+            "name": "Longchamps"
+        },
+        {
+            "code": "BSA",
+            "name": "Los Polvorines"
+        },
+        {
+            "code": "BSA",
+            "name": "Luis Guillón"
+        },
+        {
+            "code": "BSA",
+            "name": "Malvinas Argentinas"
+        },
+        {
+            "code": "BSA",
+            "name": "Martín Coronado"
+        },
+        {
+            "code": "BSA",
+            "name": "Martínez"
+        },
+        {
+            "code": "BSA",
+            "name": "Merlo"
+        },
+        {
+            "code": "BSA",
+            "name": "Ministro Rivadavia"
+        },
+        {
+            "code": "BSA",
+            "name": "Monte Chingolo"
+        },
+        {
+            "code": "BSA",
+            "name": "Monte Grande"
+        },
+        {
+            "code": "BSA",
+            "name": "Moreno"
+        },
+        {
+            "code": "BSA",
+            "name": "Morón"
+        },
+        {
+            "code": "BSA",
+            "name": "Muñiz"
+        },
+        {
+            "code": "BSA",
+            "name": "Olivos"
+        },
+        {
+            "code": "BSA",
+            "name": "Pablo Nogués"
+        },
+        {
+            "code": "BSA",
+            "name": "Pablo Podestá"
+        },
+        {
+            "code": "BSA",
+            "name": "Paso del Rey"
+        },
+        {
+            "code": "BSA",
+            "name": "Pereyra"
+        },
+        {
+            "code": "BSA",
+            "name": "Piñeiro"
+        },
+        {
+            "code": "BSA",
+            "name": "Plátanos"
+        },
+        {
+            "code": "BSA",
+            "name": "Pontevedra"
+        },
+        {
+            "code": "BSA",
+            "name": "Quilmes"
+        },
+        {
+            "code": "BSA",
+            "name": "Rafael Calzada"
+        },
+        {
+            "code": "BSA",
+            "name": "Rafael Castillo"
+        },
+        {
+            "code": "BSA",
+            "name": "Ramos Mejía"
+        },
+        {
+            "code": "BSA",
+            "name": "Ranelagh"
+        },
+        {
+            "code": "BSA",
+            "name": "Remedios de Escalada"
+        },
+        {
+            "code": "BSA",
+            "name": "Sáenz Peña"
+        },
+        {
+            "code": "BSA",
+            "name": "San Antonio de Padua"
+        },
+        {
+            "code": "BSA",
+            "name": "San Fernando"
+        },
+        {
+            "code": "BSA",
+            "name": "San Francisco Solano"
+        },
+        {
+            "code": "BSA",
+            "name": "San Isidro"
+        },
+        {
+            "code": "BSA",
+            "name": "San José"
+        },
+        {
+            "code": "BSA",
+            "name": "San Justo"
+        },
+        {
+            "code": "BSA",
+            "name": "San Martín"
+        },
+        {
+            "code": "BSA",
+            "name": "San Miguel"
+        },
+        {
+            "code": "BSA",
+            "name": "Santos Lugares"
+        },
+        {
+            "code": "BSA",
+            "name": "Sarandí"
+        },
+        {
+            "code": "BSA",
+            "name": "Sourigues"
+        },
+        {
+            "code": "BSA",
+            "name": "Tapiales"
+        },
+        {
+            "code": "BSA",
+            "name": "Temperley"
+        },
+        {
+            "code": "BSA",
+            "name": "Tigre"
+        },
+        {
+            "code": "BSA",
+            "name": "Tortuguitas"
+        },
+        {
+            "code": "BSA",
+            "name": "Tristán Suárez"
+        },
+        {
+            "code": "BSA",
+            "name": "Trujui"
+        },
+        {
+            "code": "BSA",
+            "name": "Turdera"
+        },
+        {
+            "code": "BSA",
+            "name": "Valentín Alsina"
+        },
+        {
+            "code": "BSA",
+            "name": "Vicente López"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Adelina"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Ballester"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Bosch"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Caraza"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Celina"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Centenario"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa de Mayo"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Diamante"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Domínico"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa España"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Fiorito"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Guillermina"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Insuperable"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa José León Suárez"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa La Florida"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Luzuriaga"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Martelli"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Obrera"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Progreso"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Raffo"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Sarmiento"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Tesei"
+        },
+        {
+            "code": "BSA",
+            "name": "Villa Udaondo"
+        },
+        {
+            "code": "BSA",
+            "name": "Virrey del Pino"
+        },
+        {
+            "code": "BSA",
+            "name": "Wilde"
+        },
+        {
+            "code": "BSA",
+            "name": "William Morris"
+        },
+        {
+            "code": "CAB",
+            "name": "Agronomía"
+        },
+        {
+            "code": "CAB",
+            "name": "Almagro"
+        },
+        {
+            "code": "CAB",
+            "name": "Balvanera"
+        },
+        {
+            "code": "CAB",
+            "name": "Barracas"
+        },
+        {
+            "code": "CAB",
+            "name": "Belgrano"
+        },
+        {
+            "code": "CAB",
+            "name": "Boca"
+        },
+        {
+            "code": "CAB",
+            "name": "Boedo"
+        },
+        {
+            "code": "CAB",
+            "name": "Caballito"
+        },
+        {
+            "code": "CAB",
+            "name": "Chacarita"
+        },
+        {
+            "code": "CAB",
+            "name": "Coghlan"
+        },
+        {
+            "code": "CAB",
+            "name": "Colegiales"
+        },
+        {
+            "code": "CAB",
+            "name": "Constitución"
+        },
+        {
+            "code": "CAB",
+            "name": "Flores"
+        },
+        {
+            "code": "CAB",
+            "name": "Floresta"
+        },
+        {
+            "code": "CAB",
+            "name": "La Paternal"
+        },
+        {
+            "code": "CAB",
+            "name": "Liniers"
+        },
+        {
+            "code": "CAB",
+            "name": "Mataderos"
+        },
+        {
+            "code": "CAB",
+            "name": "Monserrat"
+        },
+        {
+            "code": "CAB",
+            "name": "Monte Castro"
+        },
+        {
+            "code": "CAB",
+            "name": "Nueva Pompeya"
+        },
+        {
+            "code": "CAB",
+            "name": "Núñez"
+        },
+        {
+            "code": "CAB",
+            "name": "Palermo"
+        },
+        {
+            "code": "CAB",
+            "name": "Parque Avellaneda"
+        },
+        {
+            "code": "CAB",
+            "name": "Parque Chacabuco"
+        },
+        {
+            "code": "CAB",
+            "name": "Parque Chas"
+        },
+        {
+            "code": "CAB",
+            "name": "Parque Patricios"
+        },
+        {
+            "code": "CAB",
+            "name": "Puerto Madero"
+        },
+        {
+            "code": "CAB",
+            "name": "Recoleta"
+        },
+        {
+            "code": "CAB",
+            "name": "Retiro"
+        },
+        {
+            "code": "CAB",
+            "name": "Saavedra"
+        },
+        {
+            "code": "CAB",
+            "name": "San Cristóbal"
+        },
+        {
+            "code": "CAB",
+            "name": "San Nicolás"
+        },
+        {
+            "code": "CAB",
+            "name": "San Telmo"
+        },
+        {
+            "code": "CAB",
+            "name": "Vélez Sársfield"
+        },
+        {
+            "code": "CAB",
+            "name": "Versalles"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Crespo"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa del Parque"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Devoto"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Gral. Mitre"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Lugano"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Luro"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Ortúzar"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Pueyrredón"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Real"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Riachuelo"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Santa Rita"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Soldati"
+        },
+        {
+            "code": "CAB",
+            "name": "Villa Urquiza"
+        }
+    ]
+}
