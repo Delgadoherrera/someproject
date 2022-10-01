@@ -354,7 +354,7 @@ export default function DataTableCrudDemo() {
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                    <Column  selectionMode="single"  headerStyle={{ width: '1rem' }} exportable={false}></Column>
+                    <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
                     <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="apellido" header="Apellido del paciente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="nombreFamiliar" header="Nombre del familiar" sortable style={{ minWidth: '5rem' }}></Column>
