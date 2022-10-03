@@ -2,7 +2,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-import '../assets/NavBar.css';
+import '../assets/PrivateNavbar.css';
 import React, { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
@@ -11,6 +11,10 @@ import { useAuthContext } from "../contexts/authContext";
 import Pacientes from './Pacientes'
 import Personal from './Personal'
 import Curriculums from './Curriculums'
+import Corporativos from './Corporativos'
+import QuienesSomos from './QuienesSomos'
+import ServiciosParticulares from './ServiciosParticulares'
+import RecibosPacientes from './RecibosPacientes'
 
 
 
@@ -35,7 +39,7 @@ export default function MenubarDemo() {
                     command: (event) => {
                         setState(event.item)
                     },
-                    items: [
+                  /*   items: [
                         {
                             label: 'Centros de rehabilitacion',
                             command: (event) => {
@@ -51,12 +55,15 @@ export default function MenubarDemo() {
                             icon: 'pi pi-fw pi-video'
                         },
 
-                    ]
+                    ] */
                 },
                 {
                     label: 'Particulares',
                     icon: 'pi pi-fw pi-trash',
-                    items: [
+                    command: (event) => {
+                        setState(event.item)
+                    },
+                  /*   items: [
                         {
                             label: 'Internacion domiciliaria',
                             items: [
@@ -121,7 +128,7 @@ export default function MenubarDemo() {
                                 },
                             ]
                         },
-                    ]
+                    ] */
 
                 },
                 {
@@ -157,14 +164,14 @@ export default function MenubarDemo() {
                     icon: 'pi pi-fw pi-user-plus',
 
                 },
-                {
+    /*             {
                     label: 'Consultanos',
                     command: (event) => {
                         setState(event.item)
                     },
                     icon: 'pi pi-fw pi-user-minus',
 
-                },
+                }, */
             ]
         },
 
@@ -218,6 +225,9 @@ export default function MenubarDemo() {
                 }, {
                     label: 'Mis recibos',
                     icon: 'pi pi-fw pi-calendar-times',
+                    command: (event) => {
+                        setState(event.item)
+                    },
                 }
             ]
         },
@@ -232,176 +242,6 @@ export default function MenubarDemo() {
         }
     ];
     const itemsAdmin = [
-     /*    {
-            label: 'Pacientes',
-            icon: 'pi pi-fw pi-file',
-            command: (event) => {
-                setState(event.item)
-            } */
-            /*   items: [
-                  {
-                      label: 'Pacientes',
-                      icon: 'pi pi-fw pi-plus',
-                      command: (event) => {
-                          setState(event.item)
-                      },
-                      items: [
-                          {
-                              label: 'Centros de rehabilitacion',
-                              command: (event) => {
-                                  setState(event.item)
-                              },
-                              icon: 'pi pi-fw pi-bookmark'
-                          },
-                          {
-                              label: 'Obras sociales / Prepagas',
-                              command: (event) => {
-                                  setState(event.item)
-                              },
-                              icon: 'pi pi-fw pi-video'
-                          },
-  
-                      ] 
-                  },
-                  {
-                      label: 'Particulares',
-                      icon: 'pi pi-fw pi-trash',
-                      items: [
-                          {
-                              label: 'Internacion domiciliaria',
-                              items: [
-                                  {
-                                      label: 'Pediatria',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Adultos mayores',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Cuidados paliativos',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Rehabilitacion',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  }
-                              ],
-                          },
-                          {
-                              label: 'Servicios',
-                              items: [
-                                  {
-                                      label: 'Test a domiclio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Vacunacion a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Enfermeria a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Kinesiologia a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Medico a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                              ]
-                          },
-                      ]
-  
-                  },
-                  {
-                      separator: true
-                  },
-                  {
-                      label: 'Solicitar presupuesto',
-                      command: (event) => {
-                          setState(event.item)
-                      },
-                      icon: 'pi pi-fw pi-external-link'
-                  }
-              ] */
-    /*     }, */
-
-        /* {
-            label: 'Quienes somos?',
-            command: (event) => {
-                setState(event.item)
-            },
-            icon: 'pi pi-fw pi-pencil',
-
-        },
-        {
-            label: 'Trabaja con nosotros',
-            icon: 'pi pi-fw pi-user',
-            items: [
-                {
-                    label: 'Carga tu solicitud',
-                    command: (event) => {
-                        setState(event.item)
-                    },
-                    icon: 'pi pi-fw pi-user-plus',
-
-                },
-                {
-                    label: 'Consultanos',
-                    command: (event) => {
-                        setState(event.item)
-                    },
-                    icon: 'pi pi-fw pi-user-minus',
-
-                },
-            ]
-        },
-
-        {
-
-
-            label: 'Contactanos',
-            icon: 'pi pi-fw pi-calendar',
-            items: [
-                {
-                    label: 'Whatsapp',
-                    command: (event) => {
-                        setState(event.item)
-                    },
-                    url: 'https://api.whatsapp.com/send?phone=34123456789',
-                    icon: 'pi pi-fw pi-pencil',
-                },
-                {
-                    label: 'Email',
-                    command: (event) => {
-                        setState(event.item)
-                    },
-                    icon: 'pi pi-fw pi-calendar-times',
-                }
-            ]
-        }, */
-
         {
             label: 'Gestiones administrativas',
             icon: 'pi pi-fw pi-power-off',
@@ -419,11 +259,11 @@ export default function MenubarDemo() {
                     command: (event) => {
                         setState(event.item)
                     },
-                /*     items: [
-                        {
-                            label: 'Cargar factura'
-                        }
-                    ] */
+                    /*     items: [
+                            {
+                                label: 'Cargar factura'
+                            }
+                        ] */
                 },
                 {
                     label: 'Ver curriculums',
@@ -456,8 +296,8 @@ export default function MenubarDemo() {
 
 
         < div >
-            <div className="card">
-                {localStorage.tipoUsuario === '2' ? <Menubar model={itemsAdmin} start={start} end={end} /> : <Menubar model={items} start={start} end={end} />}
+            <div className="PrivateNavbar">
+                {localStorage.tipoUsuario === '2' ? <Menubar model={itemsAdmin} /* start={start} end={end} */ /> : <Menubar className='PrivateNavbar' model={items} /* start={start} end={end}  */ />}
 
             </div>
 
@@ -466,6 +306,10 @@ export default function MenubarDemo() {
             {state.label === "Pacientes" ? <Pacientes /> : <p>  </p>}
             {state.label === "Personal" ? <Personal /> : <p>  </p>}
             {state.label === "Ver curriculums" ? <Curriculums /> : <p>  </p>}
+            {state.label === "Corporativos" ? <Corporativos /> : <p>  </p>}
+            {state.label === "Quienes somos?" ? <QuienesSomos /> : <p>  </p>}
+            {state.label === "Particulares" ? <ServiciosParticulares /> : <p>  </p>}
+            {state.label === "Mis recibos" ? <RecibosPacientes  /> : <p>  </p>}
         </div >
 
     );

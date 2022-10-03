@@ -259,7 +259,7 @@ export default function DataTableCrudDemo() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <Button label="Alta paciente" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
+            {/*     <Button label="Alta paciente" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} /> */}
                 {/*              <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} /> */}
             </React.Fragment>
         )
