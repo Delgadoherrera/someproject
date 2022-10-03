@@ -27,7 +27,7 @@ export default function CardDemo() {
     return (
 
         <div className='contenedorServicios'>
-            <Card title="Pediatria!" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+            <Card title="Pediatria" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!" style={{
                 width: '30em',
@@ -37,7 +37,7 @@ export default function CardDemo() {
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
                 </p>
             </Card>
-            <Card title="Adultos mayores!" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+            <Card title="Adultos mayores" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!" style={{
                 width: '30em',
@@ -47,7 +47,7 @@ export default function CardDemo() {
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
                 </p>
             </Card>
-            <Card title="Rehabilitacion!" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+            <Card title="Rehabilitacion" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!" style={{
                 width: '30em',
@@ -57,7 +57,16 @@ export default function CardDemo() {
                     libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
                 </p>
             </Card>
-            
+            <Card title="Rehabilitacion" subTitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+                    libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+                    libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!" style={{
+                width: '30em',
+                margin: '1em'
+            }} footer={footer} header={header} >
+                <p className="m-0" style={{ lineHeight: '1.5' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat
+                    libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+                </p>
+            </Card>
 
         </div>
     )

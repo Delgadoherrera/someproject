@@ -3,7 +3,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import '../index.css';
-import ReactDOM from 'react-dom';
+
 
 import React, { useState, useEffect, useRef } from 'react';
 import { DataScroller } from 'primereact/datascroller';
@@ -28,13 +28,13 @@ export default function DataScrollerLoaderDemo () {
                 <div className="product-detail">
                     <div className="product-name">{data.name}</div>
                     <div className="product-description">{data.description}</div>
-                    <Rating value={data.rating} readOnly cancel={false}></Rating>
+              {/*       <Rating value={data.rating} readOnly cancel={false}></Rating> */}
                     <i className="pi pi-tag product-category-icon"></i><span className="product-category">{data.category}</span>
                 </div>
                 <div className="product-action">
-                    <span className="product-price">${data.price}</span>
-                    <Button icon="pi pi-shopping-cart" label="Add to Cart" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
-                    <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
+   {/*                  <span className="product-price">${data.price}</span> */}
+                    <Button icon="pi pi-shopping-cart" label="Ver recibo" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
+                 {/*    <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span> */}
                 </div>
             </div>
         );

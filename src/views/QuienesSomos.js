@@ -108,6 +108,3 @@ export default function OrganizationChartDemo() {
         </div>
     )
 }
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<OrganizationChartDemo />, rootElement);

@@ -15,6 +15,8 @@ import Corporativos from './Corporativos'
 import QuienesSomos from './QuienesSomos'
 import ServiciosParticulares from './ServiciosParticulares'
 import RecibosPacientes from './RecibosPacientes'
+import SolicitarPresupuesto from './SolicitarPresupuesto'
+import 'primeicons/primeicons.css';
 
 
 
@@ -31,11 +33,11 @@ export default function MenubarDemo() {
     const items = [
         {
             label: 'Servicios',
-            icon: 'pi pi-fw pi-file',
+            icon: 'pi pi-heart-fill',
             items: [
                 {
                     label: 'Corporativos',
-                    icon: 'pi pi-fw pi-plus',
+                    icon: 'pi pi-shield',
                     command: (event) => {
                         setState(event.item)
                     },
@@ -59,7 +61,7 @@ export default function MenubarDemo() {
                 },
                 {
                     label: 'Particulares',
-                    icon: 'pi pi-fw pi-trash',
+                    icon: 'pi pi-home',
                     command: (event) => {
                         setState(event.item)
                     },
@@ -149,12 +151,12 @@ export default function MenubarDemo() {
             command: (event) => {
                 setState(event.item)
             },
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-tags',
 
         },
         {
             label: 'Trabaja con nosotros',
-            icon: 'pi pi-fw pi-user',
+            icon: 'pi pi-map-marker',
             items: [
                 {
                     label: 'Carga tu solicitud',
@@ -179,7 +181,7 @@ export default function MenubarDemo() {
 
 
             label: 'Contactanos',
-            icon: 'pi pi-fw pi-calendar',
+            icon: 'pi pi-pencil',
             items: [
                 {
                     label: 'Whatsapp',
@@ -187,23 +189,23 @@ export default function MenubarDemo() {
                         setState(event.item)
                     },
                     url: 'https://api.whatsapp.com/send?phone=34123456789',
-                    icon: 'pi pi-fw pi-pencil',
+                    icon: 'pi pi-whatsapp',
                 },
                 {
                     label: 'Email',
                     command: (event) => {
                         setState(event.item)
                     },
-                    icon: 'pi pi-fw pi-calendar-times',
+                    icon: 'pi pi-envelope',
                 }
             ]
         },
 
         {
             label: 'Gestiones administrativas',
-            icon: 'pi pi-fw pi-power-off',
+            icon: 'pi pi-user-edit ',
             items: [
-                {
+              /*   {
                     label: 'Mis gestiones',
                     command: (event) => {
                         setState(event.item)
@@ -218,7 +220,7 @@ export default function MenubarDemo() {
                             label: 'Cargar factura'
                         }
                     ]
-                },
+                }, */
                 {
                     label: 'Cargar historia clinica (Solo vista para el personal)',
                     icon: 'pi pi-fw pi-calendar-times',
@@ -310,6 +312,7 @@ export default function MenubarDemo() {
             {state.label === "Quienes somos?" ? <QuienesSomos /> : <p>  </p>}
             {state.label === "Particulares" ? <ServiciosParticulares /> : <p>  </p>}
             {state.label === "Mis recibos" ? <RecibosPacientes  /> : <p>  </p>}
+            {state.label === "Solicitar presupuesto" ? <SolicitarPresupuesto  /> : <p>  </p>}
         </div >
 
     );
