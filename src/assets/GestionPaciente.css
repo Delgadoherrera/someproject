@@ -1,0 +1,17 @@
+/* .detallePacienteDiv{
+   margin-bottom: 300px;
+} */
+.card{
+    margin-top: 0px;
+    padding: 11px;
+    box-shadow: 1px 1px 1px  ;
+}
+
+.p-datatable-header{
+    background-color: rgba(0, 247, 255, 0.199) !important;
+}
+
+.FactDetail{
+    background-color: red !important;
+    display: none;
+}

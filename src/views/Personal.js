@@ -20,6 +20,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
+import PrivateNavbar from './PrivateNavbar'
 import axios from 'axios'
 import '../assets/Pacientes.css';
 export default function DataTableCrudDemo() {
@@ -347,6 +348,7 @@ export default function DataTableCrudDemo() {
 
     return (
         <div className="datatable-crud-demo">
+                <PrivateNavbar />
             <Toast ref={toast} />
 
             <div className="card">

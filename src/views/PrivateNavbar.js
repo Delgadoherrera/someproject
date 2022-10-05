@@ -250,17 +250,16 @@ export default function MenubarDemo() {
             items: [
                 {
                     label: 'Pacientes',
-                    command: (event) => {
-                        setState(event.item)
-                    },
+                    url:'/private/pacientes',                   
                     icon: 'pi pi-fw pi-pencil',
                 },
                 {
                     label: 'Personal',
                     icon: 'pi pi-fw pi-calendar-times',
-                    command: (event) => {
+                    url: '/private/personal',
+              /*       command: (event) => {
                         setState(event.item)
-                    },
+                    }, */
                     /*     items: [
                             {
                                 label: 'Cargar factura'
@@ -270,9 +269,10 @@ export default function MenubarDemo() {
                 {
                     label: 'Ver curriculums',
                     icon: 'pi pi-fw pi-calendar-times',
-                    command: (event) => {
+                    url: '/private/curriculums'
+                   /*  command: (event) => {
                         setState(event.item)
-                    },
+                    }, */
                 }, {
                     label: 'Mis recibos',
                     icon: 'pi pi-fw pi-calendar-times',

@@ -5,7 +5,8 @@ import 'primeflex/primeflex.css';
 /* import '../../index.css'; */
 
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
+import { Link, redirect } from 'react-router-dom'
 import { classNames } from 'primereact/utils';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -22,11 +23,13 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import axios from 'axios'
 import '../assets/Pacientes.css';
+import DetallePaciente from './DetallePaciente'
+import PrivateNavbar from './PrivateNavbar'
 export default function DataTableCrudDemo() {
 
 
     let emptyProduct = {
-        /*  id: null, */
+        id: '',
         nombre: '',
         precio: 0,
         nombreFamiliar: '',
@@ -57,13 +60,15 @@ export default function DataTableCrudDemo() {
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
+    const [detalleProducto, setdetalleProducto] = useState('')
+    const [toggle, setToggle] = useState(false)
     const toast = useRef(null);
     const dt = useRef(null);
     const productService = new ProductService();
 
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
-        console.log('useFxprimero')
+        /*     console.log('useFxprimero') */
 
 
     }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -274,7 +279,11 @@ export default function DataTableCrudDemo() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
+
                 <Button label="Alta paciente" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
+
+
+
                 {/*              <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} /> */}
             </React.Fragment>
         )
@@ -305,9 +314,22 @@ export default function DataTableCrudDemo() {
         return <span className={`product-badge status-${rowData.inventoryStatus/* .toLowerCase() */}`}>{rowData.inventoryStatus}</span>;
     }
 
+    const detallePaciente = (product) => {
+        setProduct({ ...product });
+        setdetalleProducto({ ...product });
+        /*    console.log('detallePaciente', product) */
+        setToggle(!toggle)
+        return <DetallePaciente product={product} />
+
+    }
+    /*    console.log(toggle) */
+
+
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
+
+                <Button icon="pi pi-home" className="p-button-rounded p-button-success mr-2" onClick={() => detallePaciente(rowData)} />
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
@@ -321,8 +343,10 @@ export default function DataTableCrudDemo() {
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
             </span>
+
         </div>
     );
+
     const productDialogFooter = (
         <React.Fragment>
             <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
@@ -344,16 +368,24 @@ export default function DataTableCrudDemo() {
 
     return (
         <div className="datatable-crud-demo">
+
+            <PrivateNavbar />
             <Toast ref={toast} />
 
             <div className="card">
+
                 <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+
+                {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
 
                 <DataTable ref={dt} value={products} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
                     dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
+
+                    <Column field="id" header="id" sortable style={{ minWidth: '5rem' }}></Column>
+
                     <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
                     <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="apellido" header="Apellido del paciente" sortable style={{ minWidth: '5rem' }}></Column>

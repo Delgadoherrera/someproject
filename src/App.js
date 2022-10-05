@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { LOGIN, LOGOUT, PRIVATE, REGISTER } from './config/routes/paths'
+import { DETALLEPACIENTE, LOGIN, LOGOUT, PACIENTES, PRIVATE, REGISTER, PERSONAL, CURRICULUMS } from './config/routes/paths'
 import { AuthContextProvider } from './contexts/authContext'
 import PublicRoute from './components/router/PublicRoute'
 import PrivateRoute from './components/router/PrivateRoute'
@@ -9,7 +9,10 @@ import Logout from './views/Logout'
 import Private from './views/Private'
 import UserRegister from './views/UserRegister';
 import UserLogin from './views/UserLogin'
-
+import DetallePaciente from './views/DetallePaciente'
+import Pacientes from './views/Pacientes'
+import Personal from './views/Personal'
+import Curriculums from './views/Curriculums'
 
 function App() {
   return (
@@ -24,6 +27,11 @@ function App() {
           </Route>
           <Route path={PRIVATE} element={<PrivateRoute />}>
             <Route path={PRIVATE} element={<Private />} />
+            <Route path={PACIENTES} element={<Pacientes />} />
+            <Route path={PERSONAL} element={<Personal />} />   
+            <Route path={CURRICULUMS} element={<Curriculums />} />
+            <Route path={DETALLEPACIENTE} element={<DetallePaciente />} />
+            
             <Route path={LOGOUT} element={<Logout />} />
           </Route>
         </Routes>
