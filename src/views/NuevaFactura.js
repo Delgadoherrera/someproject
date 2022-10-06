@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import '../assets/FileUpload.css'
+import Facturacion from './Facturacion'
 
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
@@ -23,6 +24,7 @@ export default function ReactFinalFormDemo({ products, element }) {
     const [formData, setFormData] = useState('');
     const [successful, setSuccessful] = useState(false)
     const [apiResponse, setApiResponse] = useState(false)
+    const [formValues , setFormValues]= useState(null)
 
 
     const validate = (data) => {
@@ -54,14 +56,25 @@ export default function ReactFinalFormDemo({ products, element }) {
         setFormData(data);
         setSuccessful(true)
 
+
     };
-    console.log('products', element)
+    /*     console.log('products', element) */
 
     useEffect(function (onSubmit) {
 
         /*    console.log('nueva factura id: ',products) */
         if (formData) {
             if (successful) {
+                const formValues = {
+                    idPaciente: element.id,
+                    numeroFactura: formData.target[0].value,
+                    fechaFactura: formData.target[1].value,
+                    valor: formData.target[3].value,
+                    notasVarias: formData.target[4].value,
+                    status: formData.target[5].value,
+                }
+                setFormValues(formValues)
+
                 axios.post("http://localhost:4000/paciente/facturacion", {
                     idPaciente: element.id,
                     numeroFactura: formData.target[0].value,
@@ -74,29 +87,16 @@ export default function ReactFinalFormDemo({ products, element }) {
                     setSuccessful(false)
                 })
 
+              
             }
 
 
 
         }
     }, [successful]);
-    /* 
-        useEffect(function (onSubmit) {
-            if (apiResponse === true) {
-                setSuccessful(true)
-            }
-        }, [apiResponse]); */
 
-    /*     useEffect(function () {
-    
-            if (products.idPaciente) {
-                setId(products[0].idPaciente)
-            }
-        }, [setId]); */
-
-
-
-
+   /*  console.log('formValues',formValues)
+ */
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
     const getFormErrorMessage = (meta) => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
@@ -166,6 +166,7 @@ export default function ReactFinalFormDemo({ products, element }) {
                                 </div>
                             )} />
                             <Button type="submit" label="Submit" className="mt-2" />
+                            <Facturacion formDataValues={formValues} />
 
                         </form>
                     )} />

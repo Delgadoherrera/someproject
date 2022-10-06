@@ -25,6 +25,7 @@ import axios from 'axios'
 import '../assets/Pacientes.css';
 import DetallePaciente from './DetallePaciente'
 import PrivateNavbar from './PrivateNavbar'
+import Facturacion from './Facturacion'
 export default function DataTableCrudDemo() {
 
 
@@ -375,8 +376,8 @@ export default function DataTableCrudDemo() {
             <div className="card">
 
                 <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-
-                {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
+               {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
+          
 
                 <DataTable ref={dt} value={products} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
                     dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
@@ -402,12 +403,7 @@ export default function DataTableCrudDemo() {
                     <Column field="precio" header="precio" body={precioBodyTemplate} sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="valores" header="valores" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="status" header="status" sortable style={{ minWidth: '5rem' }}></Column>
-
-                    {/* 
-                    <Column field="image" header="Image" body={imageBodyTemplate}></Column>
-                    <Column field="category" header="Category" sortable style={{ minWidth: '10rem' }}></Column>
-                    <Column field="rating" header="Reviews" body={ratingBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column>
-                    <Column field="inventoryStatus" header="Status" body={statusBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column> */}
+                    
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '15rem' }}></Column>
                 </DataTable>
             </div>
@@ -482,46 +478,11 @@ export default function DataTableCrudDemo() {
                     {submitted && !product.status && <small className="p-error">status is required.</small>}
                 </div>
 
-
-                {/* 
-
-
-                <div className="field">
-                    <label htmlFor="description">Description</label>
-                    <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
-                </div>
-
-                <div className="field">
-                    <label className="mb-3">Category</label>
-                    <div className="formgrid grid">
-                        <div className="field-radiobutton col-6">
-                            <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
-                            <label htmlFor="category1">Accessories</label>
-                        </div>
-                        <div className="field-radiobutton col-6">
-                            <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.category === 'Clothing'} />
-                            <label htmlFor="category2">Clothing</label>
-                        </div>
-                        <div className="field-radiobutton col-6">
-                            <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.category === 'Electronics'} />
-                            <label htmlFor="category3">Electronics</label>
-                        </div>
-                        <div className="field-radiobutton col-6">
-                            <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.category === 'Fitness'} />
-                            <label htmlFor="category4">Fitness</label>
-                        </div>
-                    </div>
-                </div>
- */}
                 <div className="formgrid grid">
                     <div className="field col">
                         <label htmlFor="precio">precio</label>
                         <InputNumber id="precio" value={product.precio} onValueChange={(e) => onInputNumberChange(e, 'precio')} mode="currency" currency="USD" locale="en-US" />
                     </div>
-                    {/*   <div className="field col">
-                        <label htmlFor="quantity">Quantity</label>
-                        <InputNumber id="quantity" value={product.quantity} onValueChange={(e) => onInputNumberChange(e, 'quantity')} integeronly />
-                    </div> */}
                 </div>
             </Dialog>
 

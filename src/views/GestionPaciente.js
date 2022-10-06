@@ -29,30 +29,16 @@ export default function TabMenuDemo({ products, facturas }) {
 
 
 
-    console.log('stateId: ', state)
+    console.log('stateId: ', state) 
  
 
-    const items = [
-
-        {
-            label: 'Facturacion', icon: 'pi pi-fw pi-calendar', command: (event) => {
-                setState(event.item)
-            },
-        },
-        {
-            label: 'Datos', icon: 'pi pi-fw pi-home', command: (event) => {
-                setState(event.item)
-            },
-        },
-
-    ];
 
 
     return (
         <div>
             <div className="detallePacienteDiv">
-                <TabMenu className='detallePacienteDiv' model={items} />
-           <Facturacion /* products={facturas} */ facturaId={state} facturas={facturas}  />
+          
+           <Facturacion  facturaId={state} facturas={facturas}  />
 
             </div>
 
