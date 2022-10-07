@@ -24,7 +24,7 @@ import UploadFactura from './UploadFactura'
 
 import '../assets/FacturaUpload.css';
 
-export default function DataTableCrudDemo({ facturas, facturaId, formDataValues }) {
+export default function DataTableCrudDemo({ facturas, facturaId, formDataValues, facturaEnviada }) {
 
     let emptyProduct = {
         id: null,
@@ -54,42 +54,18 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues 
 
     useEffect(() => {
         setProducts(facturas);
-        console.log('usf factura id', facturaId)
+
+    }, [products, product]);
 
 
+   
 
-
-        /*     console.log('ufx Facturacion: products', products) */
-    }, [products, product,]);
-
-
-    /* 
-    
-        console.log('retro de formDatavalues', formDataValues) */
     useEffect(() => {
-
-
         if (formDataValues !== undefined && formDataValues !== null) {
-
             console.log('hay datos de formDatavalue', formDataValues)
         }
-        else {
-            /*    console.log('no hay datos de formDatavalues') */
-        }
-
-
-        /*     console.log('ufx Facturacion: products', products) */
     }, [formDataValues]);
 
-
-    /*    console.log('facturacion facturaId', facturaId) */
-    /*     console.log('post usfx facturacion: products: ', facturas) */
-    /*   const formatCurrency = (value) => {
-          return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-      } */
-    /*  console.log('desde facturas: facturas', facturas)
-     console.log('desde facturas : productos', products)
-  */
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
@@ -362,7 +338,7 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues 
             </div> : <p> Aun no hay facturas cargadas</p>}
 
 
-            <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
+            <Dialog visible={productDialog} style={{ width: '450px' }} header="detalle de factura" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
                 {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
                 <div className="field">
                     <label htmlFor="id">id factura</label>
@@ -411,7 +387,7 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues 
 
             </Dialog>
 
-
+            {facturaEnviada === true ? <p> enviando</p> : <p> no enviado</p>}
             <Dialog visible={uploadFacturaDialog} style={{ width: '450px' }} header={` Nueva factura al paciente con ID: ${product.id}`} modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
                 <UploadFactura idValue={product.id} />
 
