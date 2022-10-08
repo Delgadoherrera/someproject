@@ -8,6 +8,7 @@ import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import '../assets/FileUpload.css'
 import Facturacion from './Facturacion'
+import Pacientes from './Pacientes'
 
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
@@ -49,8 +50,7 @@ export default function ReactFinalFormDemo({ products, element }) {
     };
 
 
-
-
+    console.log('formValues',formValues)
     const onSubmit = (data, form) => {
         data.preventDefault();
         setFormData(data);
@@ -95,16 +95,20 @@ export default function ReactFinalFormDemo({ products, element }) {
         }
     }, [successful]);
 
-   /*  console.log('formValues',formValues)
- */
+
+
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
     const getFormErrorMessage = (meta) => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
 
     };
+
+
     return (
 
         <div className="form-demo">
+            
+
             <div className="flex justify-content-center">
                 <div className="cardRegister">
                     <h5 className="text-center">Cargar una nueva factura</h5>
@@ -166,7 +170,7 @@ export default function ReactFinalFormDemo({ products, element }) {
                                 </div>
                             )} />
                             <Button type="submit" label="Submit" className="mt-2" />
-                            <Facturacion formDataValues={formValues} />
+                 
 
                         </form>
                     )} />

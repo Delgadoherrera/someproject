@@ -90,6 +90,7 @@ export default function DataTableCrudDemo() {
 
     }
 
+
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
@@ -122,7 +123,7 @@ export default function DataTableCrudDemo() {
 
             if (product.id) {
                 const index = findIndexById(product.id);
-                console.log(_product)
+            /*     console.log(_product) */
 
                 axios.post("http://localhost:4000/pacientesList/edit", _product, {
                 }).then((response) => {
@@ -135,7 +136,7 @@ export default function DataTableCrudDemo() {
                 toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
             }
             else {
-                console.log('aqui debe ir fetch')
+              /*   console.log('aqui debe ir fetch') */
 
                 axios.post("http://localhost:4000/pacientesList/create", _product, {
                 }).then((response) => {
@@ -173,14 +174,14 @@ export default function DataTableCrudDemo() {
             }).then((response) => {
                 console.log('response Api:', response)
             }));
-        console.log('delete product function', _products)
+   /*      console.log('delete product function', _products) */
         setProducts(_products);
 
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
 
-
-        console.log('eliminador de la derecha', _products)
+/* 
+        console.log('eliminador de la derecha', _products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
     }
 
@@ -242,7 +243,7 @@ export default function DataTableCrudDemo() {
     }
 
     const confirmDeleteSelected = () => {
-        console.log('delete derechos')
+/*         console.log('delete derechos') */
         setDeleteProductsDialog(true);
     }
 
@@ -251,7 +252,7 @@ export default function DataTableCrudDemo() {
         setProducts(_products);
         setDeleteProductsDialog(false);
         setSelectedProducts(null);
-        console.log('productos:', products)
+     /*    console.log('productos:', products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
     }
 

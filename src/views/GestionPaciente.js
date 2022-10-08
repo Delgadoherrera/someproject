@@ -29,7 +29,7 @@ export default function TabMenuDemo({ products, facturas }) {
 
 
 
-    console.log('stateId: ', state) 
+/*     console.log('stateId: ', state)   */
  
 
 
@@ -38,7 +38,7 @@ export default function TabMenuDemo({ products, facturas }) {
         <div>
             <div className="detallePacienteDiv">
           
-           <Facturacion  facturaId={state} facturas={facturas}  />
+           <Facturacion  facturaId={state} facturas={facturas} dataValuesProducts={products}  />
 
             </div>
 

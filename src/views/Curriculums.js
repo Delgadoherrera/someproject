@@ -53,7 +53,7 @@ export default function DataTableCrudDemo() {
 
     }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /*     console.log('productos primer usfx',products) */
+    /*     console.log('productos primer usfx',produzcts) */
 
 
 

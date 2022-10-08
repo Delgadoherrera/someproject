@@ -24,7 +24,9 @@ import UploadFactura from './UploadFactura'
 
 import '../assets/FacturaUpload.css';
 
-export default function DataTableCrudDemo({ facturas, facturaId, formDataValues, facturaEnviada }) {
+import { Link } from 'react-router-dom';
+
+export default function DataTableCrudDemo({ facturas, facturaId, formDataValues, facturaEnviada, dataValuesProducts }) {
 
     let emptyProduct = {
         id: null,
@@ -54,15 +56,16 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
     useEffect(() => {
         setProducts(facturas);
+        /*         console.log('facturacion primer usfx de produc: ', product) */
+    }, [products, product, facturas]);
 
-    }, [products, product]);
 
 
-   
+
 
     useEffect(() => {
         if (formDataValues !== undefined && formDataValues !== null) {
-            console.log('hay datos de formDatavalue', formDataValues)
+            /*     console.log('hay datos de formDatavalue', formDataValues) */
         }
     }, [formDataValues]);
 
@@ -84,6 +87,9 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
     const hideDeleteProductsDialog = () => {
         setDeleteProductsDialog(false);
+    }
+    const cantSave = () => {
+        return <p> Cant save</p>
     }
 
     const saveProduct = () => {
@@ -126,13 +132,13 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
     const uploadFactura = (product) => {
         setProduct({ ...product });
         setUploadFacturaDialog(true);
-        console.log('id del producto: ', product.id)
+        /*      console.log('id del producto: ', product.id) */
 
     }
 
     const editProduct = (product) => {
         setProduct({ ...product });
-        console.log('editando producto / Facturacion:', product)
+        /*      console.log('editando producto / Facturacion:', product) */
         setProductDialog(true);
     }
 
@@ -205,12 +211,12 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
         reader.readAsText(file, 'UTF-8');
     }
-    console.log('facturacion: products: ', products)
+    /*     console.log('facturacion: products: ', products) */
 
     const exportCSV = () => {
         dt.current.exportCSV();
     }
-
+    /*  console.log('buscando iumagen: ', products) */
     const confirmDeleteSelected = () => {
         setDeleteProductsDialog(true);
     }
@@ -284,19 +290,43 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
         );
     }
 
+    const facturaPreview = (rowData) => {
+        console.log('rowData',rowData)
+
+        return (
+
+
+            <React.Fragment>
+                <iframe className='iframeFacturacion' src={rowData.imagenFactura} />
+            </React.Fragment>
+
+
+        );
+    }
+         console.log('titutlo para facturacion',dataValuesProducts) 
+
+
     const header = (
-        <div className="table-header">
-            <h5 className="mx-0 my-1">Facturacion del paciente </h5>
+        <div className="table-header facturacionHeader">
+            {dataValuesProducts ? <h5 className="mx-0 my-1">Facturacion del paciente {dataValuesProducts.nombre} {dataValuesProducts.apellido} {/* {product} */}</h5> : <h5 className="mx-0 my-1">Facturacion del paciente {/* {product} */}</h5>}
+
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
             </span>
         </div>
     );
+
     const productDialogFooter = (
         <React.Fragment>
             <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
             <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+        </React.Fragment>
+    );
+
+    const subirFacturaDialog = (
+        <React.Fragment>
+            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
         </React.Fragment>
     );
     const deleteProductDialogFooter = (
@@ -314,35 +344,38 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
     return (
         <div className="datatable-crud-demo">
+            {/*   <iframe src={product.imagenFactura} /> */}
             <Toast ref={toast} />
             {facturas ? <div className="card">
                 <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-
                 <DataTable ref={dt} value={facturas} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
                     dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} exportable={false}></Column>
+                    <Column /* selectionMode="multiple"  */ headerStyle={{ width: '3rem' }} exportable={false}></Column>
                     <Column field="id" header="id" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column field="numeroFactura" header="Numero de factura" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column field="idPaciente" header="ID del paciente" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column field="fechaFactura" header="Fecha de facturacion" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column field="valor" header="Valor" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column field="notasVarias" header="Notas varias" sortable style={{ minWidth: '12rem' }}></Column>
-                    <Column field="imagenFactura" header="Imagen de la factura" sortable style={{ minWidth: '12rem' }}></Column>
+                    <Column body={facturaPreview} field="imagenFactura" header="Imagen de la factura" sortable style={{ minWidth: '12rem' }}>
+
+
+
+                    </Column>
                     <Column field="status" header="Status" sortable style={{ minWidth: '12rem' }}></Column>
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
-
+                    {/*    <Column body={facturaPreview} exportable={false} style={{ minWidth: '8rem' }}></Column> */}
                 </DataTable>
-            </div> : <p> Aun no hay facturas cargadas</p>}
+            </div> : <p> </p>}
 
 
-            <Dialog visible={productDialog} style={{ width: '450px' }} header="detalle de factura" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
+            <Dialog visible={productDialog} style={{ width: '450px' }} header="Crear factura" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
                 {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
-                <div className="field">
-                    <label htmlFor="id">id factura</label>
-                    <InputText id="id" disabled value={product.id} onChange={(e) => onInputChange(e, 'id')} autoFocus className={classNames({ 'p-invalid': submitted && !product.id })} />
+                <div className="field">              
+                    <InputText id="id" hidden value={product.id} onChange={(e) => onInputChange(e, 'id')} autoFocus className={classNames({ 'p-invalid': submitted && !product.id })} />
                     {submitted && !product.id && <small className="p-error">id is required.</small>}
                 </div>
 
@@ -359,14 +392,14 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
                 </div> */}
 
                 <div className="field">
-                    <label htmlFor="idPaciente">ID del paciente</label>
-                    {facturas ? <InputText id="idPaciente" value={facturaId.id} onChange={(e) => onInputChange(e, 'idPaciente')} autoFocus className={classNames({ 'p-invalid': submitted })} /> : <p> no hay facturas</p>}
+                
+                    {facturas ? <InputText id="idPaciente" hidden value={facturaId.id} onChange={(e) => onInputChange(e, 'idPaciente')} autoFocus className={classNames({ 'p-invalid': submitted })} /> : <p> no hay facturas</p>}
                     {/* 
                     {submitted && !product.idPaciente && <small className="p-error">Name is required.</small>} */}
                 </div>
                 <div className="field">
                     <label htmlFor="fechaFactura">Fecha de facturacion</label>
-                    <InputText id="fechaFactura" value={product.fechaFactura} onChange={(e) => onInputChange(e, 'fechaFactura')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaFactura })} />
+                    <InputText type='date' id="fechaFactura" value={product.fechaFactura} onChange={(e) => onInputChange(e, 'fechaFactura')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaFactura })} />
                     {submitted && !product.fechaFactura && <small className="p-error">Name is required.</small>}
                 </div>
                 <div className="field">
@@ -376,20 +409,20 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
                 </div>
 
                 <div className="field">
-                    <label htmlFor="notasVarias">notasVarias</label>
+                    <label htmlFor="notasVarias">Notas adicionales</label>
                     <InputTextarea id="notasVarias" value={product.notasVarias} onChange={(e) => onInputChange(e, 'notasVarias')} rows={3} cols={20} />
                 </div>
                 <div className="field">
-                    <label htmlFor="status">Status</label>
+                    <label htmlFor="status">Estado</label>
                     <InputText id="status" value={product.status} onChange={(e) => onInputChange(e, 'status')} autoFocus className={classNames({ 'p-invalid': submitted && !product.status })} />
                     {submitted && !product.status && <small className="p-error">Name is required.</small>}
                 </div>
 
             </Dialog>
 
-            {facturaEnviada === true ? <p> enviando</p> : <p> no enviado</p>}
-            <Dialog visible={uploadFacturaDialog} style={{ width: '450px' }} header={` Nueva factura al paciente con ID: ${product.id}`} modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
-                <UploadFactura idValue={product.id} />
+            {facturaEnviada === true ? <p> enviando</p> : <p> </p>}
+            <Dialog visible={uploadFacturaDialog} style={{ width: '450px' }} header={` Nueva factura al paciente con ID: ${formDataValues}`} modal className="p-fluid" footer={subirFacturaDialog} onHide={hideDialog} >
+                <UploadFactura idValue={product.id} imagenFactura={product.imagenFactura} />
 
             </Dialog>
 

@@ -24,6 +24,15 @@
     border-radius: 10px;
     margin-left: 20px;
 }
+.aceptarButton{
+    margin-top: 25px;
+    top: 15px;
+}
+
+.iframe{
+    width: 100%;
+    padding: 1%;
+}
 
 
 .formInput {
@@ -37,4 +46,10 @@
 
 .otraclase {
     margin-top: 25px;
+}
+.facturacionHeader{
+ 
+  /*   color: red !important */
+  padding: 1%;
+
 }

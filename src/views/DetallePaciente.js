@@ -13,6 +13,7 @@ export default function DetallePaciente({ product }) {
     const [toggle, setToggle] = useState(true)
 
 
+
     useEffect(() => {
         fetch(`http://localhost:4000/detallepaciente/${product.id}`).then(res => res.json()).then(d => setProducts(d.data));
         fetch(`http://localhost:4000/paciente/facturacion/${product.id}`).then(res => res.json()).then(d => setFacturas(d.data));
@@ -21,6 +22,7 @@ export default function DetallePaciente({ product }) {
     }, [toggle]);
 
     useEffect(() => {
+
         setToggle(!toggle)
         setProducts(product)
     }, [product]);
@@ -31,7 +33,10 @@ export default function DetallePaciente({ product }) {
         console.log('detallePaciente: facturas', facturas) */
     return (
 
+
         <GestionPaciente facturas={facturas} products={products} />
+
+
 
 
     )

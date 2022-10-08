@@ -1,0 +1,17 @@
+.iframeFacturacion{
+    width: 100%;
+    box-shadow: 3px 4px 5px rgba(114, 218, 250, 0.315);
+    zoom: 200%;
+    
+}
+td{
+   color: rgb(12, 1, 1) !important;
+   background-color: rgba(0, 0, 0, 0.007) !important;
+   top: 10px;
+   margin-bottom: 10px;
+}
+
+th{
+    background-color: rgba(0, 0, 0, 0.014) !important;
+}
+
