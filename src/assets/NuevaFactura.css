@@ -1,3 +1,47 @@
 .cardRegister{
     width: 100%;
 }
+
+#root > div > div > div > div.form-demo > div > div > h5{
+    margin-bottom: 30px;
+}
+
+
+#fichero {
+    opacity: 0;
+    width: 200px;
+}
+
+.circle::after {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #6366F1;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: auto;
+    text-align: center;
+    content: "Adjuntar archivo";
+    border-radius: 10px;
+    margin: auto;
+}
+
+.p-fluid{
+    width: 30%;
+    margin: auto;
+}
+
+.formInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.otraclase {
+    margin-top: 25px;
+}

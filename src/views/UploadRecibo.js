@@ -2,25 +2,16 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-import '../assets/Form.css'
-import '../assets/FacturaUpload.css'
-
+import '../assets/RecibosUpload.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import '../assets/FileUpload.css'
 import { classNames } from 'primereact/utils';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 
-import { useNavigate, useRouteLoaderData } from "react-router-dom";
-
-
-
-
-export default function ReactFinalFormDemo({ idValue, imagenFactura }) {
-
+export default function ReactFinalFormDemo({ idValue, imagenRecibo }) {
 
     const [file, setFile] = useState()
     const [successful, setSuccessful] = useState(false)
@@ -31,7 +22,6 @@ export default function ReactFinalFormDemo({ idValue, imagenFactura }) {
         setFile(e.target.files[0])
         /*   console.log('del select handler', e.target.files[0]) */
     }
-    const navigate = useNavigate()
 
     const validate = (data) => {
         let errors = {};
@@ -69,7 +59,7 @@ export default function ReactFinalFormDemo({ idValue, imagenFactura }) {
         const finalValues = new FormData();
         finalValues.append('file', file)
 
-        axios.post(`http://localhost:4000/paciente/facturacion/uploadFactura/${idValue}`, finalValues, {
+        axios.post(`http://localhost:4000/recibos/uploadRecibo/${idValue}`, finalValues, {
         }).then((response) => {
             console.log('response Api:', response)
 
@@ -89,7 +79,7 @@ export default function ReactFinalFormDemo({ idValue, imagenFactura }) {
 
     }, [onSubmit]);
 
-    console.log('imagenFActura', imagenFactura)
+    console.log('imagenRecibo', imagenRecibo)
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
     const getFormErrorMessage = (meta) => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
@@ -101,8 +91,8 @@ export default function ReactFinalFormDemo({ idValue, imagenFactura }) {
         <div className="form-demo">
             <div className="flex justify-content-center">
                 <div className="cardRegister">
-                    <h5 className="text-center">Factura actual:</h5>
-                    <iframe className='iframe' src={imagenFactura} alt='aqui nada' />
+                    <h5 className="text-center">Imagen re recibo actual:</h5>
+                    <iframe className='iframe' src={imagenRecibo} alt='aqui nada' />
 
                     <Form onSubmit={onSubmit}/*  initialValues={{}}  */ validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={onSubmit} className="p-fluid">

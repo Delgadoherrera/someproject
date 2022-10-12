@@ -2,9 +2,6 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-/* import '../../index.css'; */
-
-
 import React, { useState, useEffect, useRef, } from 'react';
 import { Link, redirect } from 'react-router-dom'
 import { classNames } from 'primereact/utils';
@@ -25,7 +22,7 @@ import axios from 'axios'
 import '../assets/Pacientes.css';
 import DetallePaciente from './DetallePaciente'
 import PrivateNavbar from './PrivateNavbar'
-import Facturacion from './Facturacion'
+import EvolucionPaciente from './EvolucionPaciente'
 export default function DataTableCrudDemo() {
 
 
@@ -63,6 +60,7 @@ export default function DataTableCrudDemo() {
     const [globalFilter, setGlobalFilter] = useState(null);
     const [detalleProducto, setdetalleProducto] = useState('')
     const [toggle, setToggle] = useState(false)
+    const [toggleEvolucion, setToggleEvolucion] = useState(false)
     const toast = useRef(null);
     const dt = useRef(null);
     const productService = new ProductService();
@@ -74,7 +72,7 @@ export default function DataTableCrudDemo() {
 
     }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /*     console.log('productos primer usfx',products) */
+    console.log('productos primer usfx', product)
 
 
 
@@ -123,7 +121,7 @@ export default function DataTableCrudDemo() {
 
             if (product.id) {
                 const index = findIndexById(product.id);
-            /*     console.log(_product) */
+                /*     console.log(_product) */
 
                 axios.post("http://localhost:4000/pacientesList/edit", _product, {
                 }).then((response) => {
@@ -136,7 +134,7 @@ export default function DataTableCrudDemo() {
                 toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
             }
             else {
-              /*   console.log('aqui debe ir fetch') */
+                /*   console.log('aqui debe ir fetch') */
 
                 axios.post("http://localhost:4000/pacientesList/create", _product, {
                 }).then((response) => {
@@ -174,14 +172,14 @@ export default function DataTableCrudDemo() {
             }).then((response) => {
                 console.log('response Api:', response)
             }));
-   /*      console.log('delete product function', _products) */
+        /*      console.log('delete product function', _products) */
         setProducts(_products);
 
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
 
-/* 
-        console.log('eliminador de la derecha', _products) */
+        /* 
+                console.log('eliminador de la derecha', _products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
     }
 
@@ -243,7 +241,7 @@ export default function DataTableCrudDemo() {
     }
 
     const confirmDeleteSelected = () => {
-/*         console.log('delete derechos') */
+        /*         console.log('delete derechos') */
         setDeleteProductsDialog(true);
     }
 
@@ -252,7 +250,7 @@ export default function DataTableCrudDemo() {
         setProducts(_products);
         setDeleteProductsDialog(false);
         setSelectedProducts(null);
-     /*    console.log('productos:', products) */
+        /*    console.log('productos:', products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
     }
 
@@ -319,19 +317,20 @@ export default function DataTableCrudDemo() {
     const detallePaciente = (product) => {
         setProduct({ ...product });
         setdetalleProducto({ ...product });
-        /*    console.log('detallePaciente', product) */
         setToggle(!toggle)
-        return <DetallePaciente product={product} />
-
     }
-    /*    console.log(toggle) */
 
-
+    const evolucionPaciente = (product) => {
+        setProduct({ ...product });
+        setdetalleProducto({ ...product });
+        setToggleEvolucion(!toggleEvolucion)
+        setToggle(!toggle)
+    }
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-
-                <Button icon="pi pi-home" className="p-button-rounded p-button-success mr-2" onClick={() => detallePaciente(rowData)} />
+                {/*                 <Button icon="pi pi-book" className="p-button-rounded p-button-success mr-2" onClick={() => evolucionPaciente(rowData)} />
+ */}                <Button icon="pi pi-book" className="p-button-rounded p-button-success mr-2" onClick={() => detallePaciente(rowData)} />
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
@@ -339,8 +338,8 @@ export default function DataTableCrudDemo() {
     }
 
     const header = (
-        <div className="table-header">
-            <h5 className="mx-0 my-1">Gestion de pacientes</h5>
+        <div className="table-header-pacientes">
+            <h5 className="mx-0 my-1 tituloEvolucion"> <span>Gestion de pacientes </span></h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -351,8 +350,8 @@ export default function DataTableCrudDemo() {
 
     const productDialogFooter = (
         <React.Fragment>
-            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+            <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+            <Button label="Guardar paciente" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
         </React.Fragment>
     );
     const deleteProductDialogFooter = (
@@ -368,17 +367,20 @@ export default function DataTableCrudDemo() {
         </React.Fragment>
     );
 
+
     return (
         <div className="datatable-crud-demo">
 
             <PrivateNavbar />
+
             <Toast ref={toast} />
 
             <div className="card">
 
                 <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-               {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
-          
+
+                {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
+                {detalleProducto !== '' && toggle == ! false ? <EvolucionPaciente evolucionId={product.id} datosPaciente={product} /> : <p> </p>}
 
                 <DataTable ref={dt} value={products} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
                     dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
@@ -386,10 +388,13 @@ export default function DataTableCrudDemo() {
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
 
-                    <Column field="id" header="id" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column hidden field="id" header="id" sortable style={{ minWidth: '5rem' }}></Column>
 
                     <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
-                    <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }}>
+
+                    </Column>
+
                     <Column field="apellido" header="Apellido del paciente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="nombreFamiliar" header="Nombre del familiar" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="apellidoFamiliar" header="Apellido del familiar" sortable style={{ minWidth: '5rem' }}></Column>
@@ -404,7 +409,7 @@ export default function DataTableCrudDemo() {
                     <Column field="precio" header="precio" body={precioBodyTemplate} sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="valores" header="valores" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="status" header="status" sortable style={{ minWidth: '5rem' }}></Column>
-                    
+
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '15rem' }}></Column>
                 </DataTable>
             </div>
@@ -446,12 +451,13 @@ export default function DataTableCrudDemo() {
                     <InputText id="email" value={product.email} onChange={(e) => onInputChange(e, 'email')} autoFocus className={classNames({ 'p-invalid': submitted && !product.email })} />
                     {submitted && !product.email && <small className="p-error">email is required.</small>}
                 </div>
-
                 <div className="field">
-                    <label htmlFor="patologia">Apellido del familiar</label>
+                    <label htmlFor="patologia">Patologia</label>
                     <InputText id="patologia" value={product.patologia} onChange={(e) => onInputChange(e, 'patologia')} autoFocus className={classNames({ 'p-invalid': submitted && !product.patologia })} />
-                    {submitted && !product.patologia && <small className="p-error">Name is required.</small>}
+                    {submitted && !product.patologia && <small className="p-error">patologia is required.</small>}
                 </div>
+
+
                 <div className="field">
                     <label htmlFor="asistente">asistente</label>
                     <InputText id="asistente" value={product.asistente} onChange={(e) => onInputChange(e, 'asistente')} autoFocus className={classNames({ 'p-invalid': submitted && !product.asistente })} />

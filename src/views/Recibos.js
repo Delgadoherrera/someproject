@@ -3,34 +3,44 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 /* import '../../index.css'; */
+import '../assets/RecibosUpload.css'
 
 
 import React, { useState, useEffect, useRef } from 'react';
 import { classNames } from 'primereact/utils';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { ProductService } from '../services/CurriculumService';
+import { ProductService } from '../services/RecibosService';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { FileUpload } from 'primereact/fileupload';
 import { Rating } from 'primereact/rating';
 import { Toolbar } from 'primereact/toolbar';
 import { InputTextarea } from 'primereact/inputtextarea';
-import { RadioButton } from 'primereact/radiobutton';
-import { InputNumber } from 'primereact/inputnumber';
+import UploadRecibo from './UploadRecibo'
+import '../assets/FacturaUpload.css';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
-import PrivateNavbar from '../views/PrivateNavbar';
+import PrivateNavbar from './PrivateNavbar'
 import axios from 'axios'
-import '../assets/Pacientes.css';
-export default function DataTableCrudDemo() {
+
+export default function Recibos() {
 
 
     let emptyProduct = {
-
-        nombre: '',
-        rating: 0
-
+        emisor: '',
+        precio: '',
+        fechaEjecucion: '',
+        referencia: '',
+        cuitBeneficiario: '',
+        imagenRecibo: '',
+        importe: '',
+        cbuBeneficiario: '',
+        valor: '',
+        numeroOperacion: '',
+        notasVarias: '',
+        status: '',
+        beneficiario: ''
     };
 
     const [products, setProducts] = useState(null);
@@ -42,18 +52,20 @@ export default function DataTableCrudDemo() {
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
     const [saved, setSaved] = useState(false);
+    const [uploadReciboDialog, setUploadReciboDialog] = useState(false)
     const toast = useRef(null);
     const dt = useRef(null);
     const productService = new ProductService();
 
     useEffect(() => {
-        productService.getProducts().then(data => setProducts(data));
-        console.log('useFxprimero')
+        productService.getRecibos().then(data => setProducts(data));
+        console.log('cambio product')
+
 
 
     }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /*     console.log('productos primer usfx',produzcts) */
+    /*     console.log('productos primer usfx',products) */
 
 
 
@@ -78,6 +90,7 @@ export default function DataTableCrudDemo() {
     const hideDialog = () => {
         setSubmitted(false);
         setProductDialog(false);
+        setUploadReciboDialog(false);
     }
 
     const hideDeleteProductDialog = () => {
@@ -91,7 +104,7 @@ export default function DataTableCrudDemo() {
     const saveProduct = () => {
         setSubmitted(true);
 
-        if (product.nombre.trim()) {
+        if (product.emisor.trim()) {
             let _products = [...products];
             let _product = { ...product };
 
@@ -103,7 +116,7 @@ export default function DataTableCrudDemo() {
                 const index = findIndexById(product.id);
                 console.log(_product)
 
-                axios.post("http://localhost:4000/curriculums/edit", _product, {
+                axios.post("http://localhost:4000/recibos/edit", _product, {
                 }).then((response) => {
                     console.log('response Api:', response)
                 })
@@ -116,12 +129,12 @@ export default function DataTableCrudDemo() {
             else {
                 console.log('aqui debe ir fetch')
 
-                /*    axios.post("http://localhost:4000/pacientesList/create", _product, {
-                   }).then((response) => {
-                       console.log('response Api:', response)
-                   })
-   
-    */
+                axios.post("http://localhost:4000/recibos/create", _product, {
+                }).then((response) => {
+                    console.log('response Api:', response)
+                })
+
+
                 _product.id = createId();
                 _product.image = 'product-placeholder.svg';
                 _products.push(_product);
@@ -131,6 +144,7 @@ export default function DataTableCrudDemo() {
             setProducts(_products);
             setProductDialog(false);
             setProduct(emptyProduct);
+            setSaved(true)
 
         }
     }
@@ -148,7 +162,7 @@ export default function DataTableCrudDemo() {
 
     const deleteProduct = () => {
         let _products = products.filter(val => val.id !== product.id,
-            axios.post("http://localhost:4000/curriculums/destroy", product, {
+            axios.post("http://localhost:4000/recibos/destroy", product, {
             }).then((response) => {
                 console.log('response Api:', response)
             }));
@@ -198,12 +212,11 @@ export default function DataTableCrudDemo() {
             const importedData = data.map(d => {
                 d = d.split(',');
                 const processedData = cols.reduce((obj, c, i) => {
-                    c = c === 'Status' ? 'inventoryStatus' : (c === 'Reviews' ? 'rating' : c.toLowerCase());
+                    c = c === 'Status' ? 'inventoryStatus' : (c === 'Reviews' ? 'rating' : c/* .toLowerCase() */);
                     obj[c] = d[i].replace(/['"]+/g, '');
-                    (c === 'price' || c === 'rating') && (obj[c] = parseFloat(obj[c]));
+                    (c === 'precio' || c === 'rating') && (obj[c] = parseFloat(obj[c]));
                     return obj;
                 }, {});
-
 
                 processedData['id'] = createId();
                 return processedData;
@@ -260,7 +273,7 @@ export default function DataTableCrudDemo() {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                {/*     <Button label="Alta paciente" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} /> */}
+                <Button label="Nuevo recibo" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
                 {/*              <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} /> */}
             </React.Fragment>
         )
@@ -284,7 +297,7 @@ export default function DataTableCrudDemo() {
     }
 
     const ratingBodyTemplate = (rowData) => {
-        return <Rating value={rowData.rating} cancel={false} />;
+        return <Rating value={rowData.rating} readOnly cancel={false} />;
     }
 
     const statusBodyTemplate = (rowData) => {
@@ -294,26 +307,33 @@ export default function DataTableCrudDemo() {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
+                <Button icon="pi pi-circle" className="p-button-rounded p-button-success mr-2" onClick={() => uploadRecibo(rowData)} />
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
         );
     }
 
-    const cvView = (rowData) => {
+    const uploadRecibo = (product) => {
+        setProduct({ ...product });
+        setUploadReciboDialog(true);
+        /*      console.log('id del producto: ', product.id) */
+
+    }
+
+    const facturaPreview = (rowData) => {
         console.log('rowData', rowData)
+
         return (
             <React.Fragment>
-                <iframe className='iframeFacturacion' src={rowData.cv} />
+                <iframe className='iframeFacturacion' src={rowData.imagenRecibo} />
             </React.Fragment>
-
-
         );
     }
 
     const header = (
         <div className="table-header">
-            <h5 className="mx-0 my-1">Gestion de Curriculums</h5>
+            <h5 className="mx-0 my-1">Mis recibos</h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
@@ -322,8 +342,8 @@ export default function DataTableCrudDemo() {
     );
     const productDialogFooter = (
         <React.Fragment>
-            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+            <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+            <Button label="Guardar" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
         </React.Fragment>
     );
     const deleteProductDialogFooter = (
@@ -338,11 +358,14 @@ export default function DataTableCrudDemo() {
             <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedProducts} />
         </React.Fragment>
     );
+    const subirReciboDialog = (
+        <React.Fragment>
+            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+        </React.Fragment>
+    );
 
     return (
-
         <div className="datatable-crud-demo">
-
             <PrivateNavbar />
             <Toast ref={toast} />
 
@@ -355,52 +378,72 @@ export default function DataTableCrudDemo() {
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                     <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
-                    <Column field="nombre" header="Nombre" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="apellido" header="apellido" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="telefono" header="telefono" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="email" header="email" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="fechaNacimiento" header="Fecha de nacimiento" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="localidad" header="Localidad" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="aplicaPersonal" header="Aplica para personal" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column body={cvView} field="cv" header="Imagen del cv" sortable style={{ minWidth: '12rem' }} />
+                    <Column field="emisor" header="emisor" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="fechaEjecucion" header="fechaEjecucion" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="beneficiario" header="beneficiario" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="numeroOperacion" header="Numero de operacion" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="cuitBeneficiario" header="cuitBeneficiario" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="cbuBeneficiario" header="cbuBeneficiario" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="referencia" header="referencia" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="importe" header="importe" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column body={facturaPreview} field="imagenRecibo" header="Imagen del recibo" sortable style={{ minWidth: '12rem' }} />
+                    <Column field="notasVarias" header="Notas sobre la operacion" sortable style={{ minWidth: '5rem' }}></Column>
 
-                    {/*                     <Column field="rating" header="Reviews" onChange={(e) => onInputChange(e, 'nombre')} body={ratingBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column> */}
-                    <Column field="notasVarias" header="notasVarias" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '15rem' }}></Column>
+                    {/*    <Column field="notasVarias" header="Notas varias" sortable style={{ minWidth: '5rem' }}></Column> */}
                 </DataTable>
             </div>
 
-            <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+            <Dialog visible={productDialog} style={{ width: '450px' }} header="Nuevo recibo" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
                 {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
                 <div className="field">
-                    <label htmlFor="nombre">Nombre</label>
-                    <InputText id="nombre" value={product.nombre} onChange={(e) => onInputChange(e, 'nombre')} autoFocus className={classNames({ 'p-invalid': submitted && !product.nombre })} />
-                    {submitted && !product.nombre && <small className="p-error">Name is required.</small>}
+                    <label htmlFor="emisor">Emisor</label>
+                    <InputText id="emisor" value={product.emisor} onChange={(e) => onInputChange(e, 'emisor')} autoFocus className={classNames({ 'p-invalid': submitted && !product.emisor })} />
+                    {submitted && !product.emisor && <small className="p-error">Name is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="apellido">Apellido</label>
-                    <InputText id="apellido" value={product.apellido} onChange={(e) => onInputChange(e, 'apellido')} autoFocus className={classNames({ 'p-invalid': submitted && !product.apellido })} />
-                    {submitted && !product.apellido && <small className="p-error">apellido is required.</small>}
+                    <label htmlFor="fechaEjecucion">Fecha de ejecucion</label>
+                    <InputText type='date' id="fechaEjecucion" value={product.fechaEjecucion} onChange={(e) => onInputChange(e, 'fechaEjecucion')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaEjecucion })} />
+                    {submitted && !product.fechaEjecucion && <small className="p-error">fechaEjecucion is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="telefono">telefono</label>
-                    <InputNumber value={product.telefono} id="telefono" onValueChange={(e) => onInputNumberChange(e, 'telefono')} />
+                    <label htmlFor="numeroOperacion">Numero de operacion</label>
+                    <InputText id="numeroOperacion" value={product.numeroOperacion} onChange={(e) => onInputChange(e, 'numeroOperacion')} autoFocus className={classNames({ 'p-invalid': submitted && !product.numeroOperacion })} />
+                    {submitted && !product.numeroOperacion && <small className="p-error">numeroOperacion is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="email">Email</label>
-                    <InputText id="email" value={product.email} onChange={(e) => onInputChange(e, 'email')} autoFocus className={classNames({ 'p-invalid': submitted && !product.email })} />
-                    {submitted && !product.email && <small className="p-error">email is required.</small>}
+                    <label htmlFor="cbuBeneficiario">CBU del beneficiario</label>
+                    <InputText type='number' value={product.cbuBeneficiario} id="cbuBeneficiario" placeholder={product.cbuBeneficiario} onChange={(e) => onInputChange(e, 'cbuBeneficiario')} autoFocus className={classNames({ 'p-invalid': submitted && !product.cbuBeneficiario })} />
+                    {submitted && !product.cbuBeneficiario && <small className="p-error">cbuBeneficiario is required.</small>}
+                </div>
+                <div className="field">
+                    <label htmlFor="cuitBeneficiario">CUIT del beneficiario</label>
+                    <InputText type='cuitBeneficiario' value={product.cuitBeneficiario} id="cuitBeneficiario" onChange={(e) => onInputChange(e, 'cuitBeneficiario')} autoFocus className={classNames({ 'p-invalid': submitted && !product.cuitBeneficiario })} />
+                    {submitted && !product.cuitBeneficiario && <small className="p-error">cuitBeneficiario is required.</small>}
+                </div>
+                <div className="field">
+                    <label htmlFor="beneficiario">Beneficiario</label>
+                    <InputText value={product.beneficiario} id="beneficiario" placeholder={product.beneficiario} onChange={(e) => onInputChange(e, 'beneficiario')} autoFocus className={classNames({ 'p-invalid': submitted && !product.beneficiario })} />
+                    {submitted && !product.beneficiario && <small className="p-error">Name is required.</small>}
                 </div>
 
                 <div className="field">
-                    <label htmlFor="fechaNacimiento">fechaNacimiento</label>
-                    <InputText type='date' id="fechaNacimiento" placeholder={product.fechaNacimiento} value={product.fechaNacimiento} onChange={(e) => onInputChange(e, 'fechaNacimiento')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaNacimiento })} />
-                    {submitted && !product.fechaNacimiento && <small className="p-error">fechaNacimiento is required.</small>}
+                    <label htmlFor="referencia">Referencia</label>
+                    <InputText id="referencia" value={product.referencia} onChange={(e) => onInputChange(e, 'referencia')} autoFocus className={classNames({ 'p-invalid': submitted && !product.referencia })} />
+                    {submitted && !product.referencia && <small className="p-error">Name is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="notasVarias">notasVarias</label>
+                    <label htmlFor="importe">Importe</label>
+                    <InputText id="importe" value={product.importe} onChange={(e) => onInputChange(e, 'importe')} autoFocus className={classNames({ 'p-invalid': submitted && !product.importe })} />
+                    {submitted && !product.importe && <small className="p-error">importe is required.</small>}
+                </div>
+                <div className="field">
+                    <label htmlFor="notasVarias">Notas varias</label>
                     <InputTextarea id="notasVarias" value={product.notasVarias} onChange={(e) => onInputChange(e, 'notasVarias')} rows={3} cols={20} />
                 </div>
+            </Dialog>
+            <Dialog visible={uploadReciboDialog} style={{ width: '450px' }} header={'Adjuntar imagen al recibo'} modal className="p-fluid" footer={subirReciboDialog} onHide={hideDialog} >
+                <UploadRecibo idValue={product.id} imagenRecibo={product.imagenRecibo} />
 
             </Dialog>
 

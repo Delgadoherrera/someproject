@@ -17,8 +17,6 @@ export default function DetallePaciente({ product }) {
     useEffect(() => {
         fetch(`http://localhost:4000/detallepaciente/${product.id}`).then(res => res.json()).then(d => setProducts(d.data));
         fetch(`http://localhost:4000/paciente/facturacion/${product.id}`).then(res => res.json()).then(d => setFacturas(d.data));
-        /*         console.log('buscando por id Detallepaciente; ')
-         */
     }, [toggle]);
 
     useEffect(() => {
@@ -27,10 +25,6 @@ export default function DetallePaciente({ product }) {
         setProducts(product)
     }, [product]);
 
-
-    /* 
-        console.log('detallePaciente: products', products)
-        console.log('detallePaciente: facturas', facturas) */
     return (
 
 

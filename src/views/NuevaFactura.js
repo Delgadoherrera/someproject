@@ -6,12 +6,8 @@ import '../assets/NuevaFactura.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import '../assets/FileUpload.css'
-import Facturacion from './Facturacion'
-import Pacientes from './Pacientes'
-
+import '../assets/NuevaFactura.css'
 import { Calendar } from 'primereact/calendar';
-import { Dropdown } from 'primereact/dropdown';
 import { Checkbox } from 'primereact/checkbox';
 import { classNames } from 'primereact/utils';
 import { Form, Field } from 'react-final-form';

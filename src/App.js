@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { DETALLEPACIENTE, LOGIN, LOGOUT, PACIENTES, PRIVATE, REGISTER, PERSONAL, CURRICULUMS } from './config/routes/paths'
+import { DETALLEPACIENTE, LOGIN, LOGOUT, PACIENTES, PRIVATE, REGISTER, PERSONAL, CURRICULUMS, RECIBOS } from './config/routes/paths'
 import { AuthContextProvider } from './contexts/authContext'
 import PublicRoute from './components/router/PublicRoute'
 import PrivateRoute from './components/router/PrivateRoute'
@@ -13,6 +13,7 @@ import DetallePaciente from './views/DetallePaciente'
 import Pacientes from './views/Pacientes'
 import Personal from './views/Personal'
 import Curriculums from './views/Curriculums'
+import Recibos from './views/Recibos'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path={PACIENTES} element={<Pacientes />} />
             <Route path={PERSONAL} element={<Personal />} />   
             <Route path={CURRICULUMS} element={<Curriculums />} />
+            <Route path={RECIBOS} element={<Recibos />} />
   {/*           <Route path={DETALLEPACIENTE} element={<DetallePaciente />} /> */}
             
             <Route path={LOGOUT} element={<Logout />} />

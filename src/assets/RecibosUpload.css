@@ -1,4 +1,4 @@
-#root > div > div > div > div.form-demo > div > div > h5{
+#root>div>div>div>div.form-demo>div>div>h5 {
     margin-bottom: 30px;
 }
 
@@ -20,17 +20,18 @@
     text-transform: uppercase;
     width: auto;
     text-align: center;
-    content: "Adjunta archivo";
+    content: "Adjunta archivo" !important;
     border-radius: 10px;
     margin-left: 20px;
 
 }
-.aceptarButton{
+
+.aceptarButton {
     margin-top: 25px;
     top: 15px;
 }
 
-.iframe{
+.iframe {
     width: 100%;
     padding: 1%;
 }
@@ -48,18 +49,6 @@
 .otraclase {
     margin-top: 25px;
 }
-.facturacionHeader{
- 
-  /*   color: red !important */
-  padding: 1% !important;
-}
-
-.spanFacturacion{
-    color:rgba(21, 68, 154, 0.674);
- 
-}
-
-.tituloEvolucion {
-    font-size: 40px;
-    text-align: center;
+.facturacionHeader {   
+    padding: 1%;
 }

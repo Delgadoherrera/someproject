@@ -20,46 +20,24 @@
     text-transform: uppercase;
     width: auto;
     text-align: center;
-    content: "Adjunta archivo";
+    content: "Adjuntar CV";
     border-radius: 10px;
-    margin-left: 20px;
-
-}
-.aceptarButton{
-    margin-top: 25px;
-    top: 15px;
+    margin: auto;
 }
 
-.iframe{
-    width: 100%;
-    padding: 1%;
+.p-fluid{
+    width: 30%;
+    margin: auto;
 }
-
 
 .formInput {
     width: 0.1px;
     height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
+    opacity: 0;    overflow: hidden;
     position: absolute;
     z-index: -1;
 }
 
 .otraclase {
     margin-top: 25px;
-}
-.facturacionHeader{
- 
-  /*   color: red !important */
-  padding: 1% !important;
-}
-
-.spanFacturacion{
-    color:rgba(21, 68, 154, 0.674);
- 
-}
-
-.tituloEvolucion {
-    font-size: 40px;
-    text-align: center;
 }

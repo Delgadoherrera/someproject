@@ -37,4 +37,12 @@
         width: 100%;
     }
 }
-                
+
+.tituloEvolucion{
+    font-size: 40px;
+    text-align: center;
+}
+.spanEvolucion{
+    color:rgba(21, 68, 154, 0.674);
+}
+

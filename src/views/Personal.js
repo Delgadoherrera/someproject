@@ -32,7 +32,7 @@ export default function DataTableCrudDemo() {
         precio: '',
         apellido: '',
         vacunaciones: '',
-        telefono: 0,
+        telefono: '',
         email: '',
         monotributo: '',
         dni: '',
@@ -66,13 +66,13 @@ export default function DataTableCrudDemo() {
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
         console.log('cambio product')
-        
+
 
 
     }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
 
     /*     console.log('productos primer usfx',products) */
-    
+
 
 
     /* 
@@ -312,8 +312,8 @@ export default function DataTableCrudDemo() {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} /> 
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
         );
     }
@@ -329,8 +329,8 @@ export default function DataTableCrudDemo() {
     );
     const productDialogFooter = (
         <React.Fragment>
-            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Saveee" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+            <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+            <Button label="Guardar" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
         </React.Fragment>
     );
     const deleteProductDialogFooter = (
@@ -348,7 +348,7 @@ export default function DataTableCrudDemo() {
 
     return (
         <div className="datatable-crud-demo">
-                <PrivateNavbar />
+            <PrivateNavbar />
             <Toast ref={toast} />
 
             <div className="card">
@@ -361,42 +361,42 @@ export default function DataTableCrudDemo() {
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                     <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
                     <Column field="nombre" header="Nombre" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="apellido" header="Apellido del paciente" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="direccion" header="direccion" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="telefono" header="telefono" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="apellido" header="Apellido" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="direccion" header="Direccion" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="telefono" header="Telefono" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="dni" header="Dni" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="vacunaciones" header="vacunaciones" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="monotributo" header="monotributo" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="email" header="email" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="vacunaciones" header="Vacunaciones" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="monotributo" header="Monotributo" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="email" header="Email" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="fechaInicio" header="Fecha de inicio" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="fechaFinal" header="Fecha final" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="notasVarias" header="Notas varias" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="valor" header="valor" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="status" header="status" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="valor" header="Valor" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="status" header="Status" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '15rem' }}></Column>
                 </DataTable>
             </div>
 
-            <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+            <Dialog visible={productDialog} style={{ width: '450px' }} header="Alta personal" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
                 {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
                 <div className="field">
-                    <label htmlFor="nombre">Nombre del Paciente</label>
+                    <label htmlFor="nombre">Nombre</label>
                     <InputText id="nombre" value={product.nombre} onChange={(e) => onInputChange(e, 'nombre')} autoFocus className={classNames({ 'p-invalid': submitted && !product.nombre })} />
                     {submitted && !product.nombre && <small className="p-error">Name is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="apellido">Apellido del Paciente</label>
+                    <label htmlFor="apellido">Apellido</label>
                     <InputText id="apellido" value={product.apellido} onChange={(e) => onInputChange(e, 'apellido')} autoFocus className={classNames({ 'p-invalid': submitted && !product.apellido })} />
                     {submitted && !product.apellido && <small className="p-error">apellido is required.</small>}
-                </div>       
+                </div>
                 <div className="field">
-                    <label htmlFor="dni">dni del familiar</label>
+                    <label htmlFor="dni">Dni</label>
                     <InputText type='number' value={product.dni} id="dni" placeholder={product.dni} onChange={(e) => onInputChange(e, 'dni')} autoFocus className={classNames({ 'p-invalid': submitted && !product.dni })} />
                     {submitted && !product.dni && <small className="p-error">dni is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="telefono">dni del familiar</label>
-                    <InputText type='telefono' value={product.telefono} id="telefono" placeholder={product.telefono} onChange={(e) => onInputChange(e, 'telefono')} autoFocus className={classNames({ 'p-invalid': submitted && !product.telefono })} />
+                    <label htmlFor="telefono">Telefono de contacto:</label>
+                    <InputText type='telefono' value={product.telefono} id="telefono"  onChange={(e) => onInputChange(e, 'telefono')} autoFocus className={classNames({ 'p-invalid': submitted && !product.telefono })} />
                     {submitted && !product.telefono && <small className="p-error">telefono is required.</small>}
                 </div>
                 <div className="field">
@@ -411,31 +411,31 @@ export default function DataTableCrudDemo() {
                 </div>
 
                 <div className="field">
-                    <label htmlFor="vacunaciones">vacunaciones del familiar</label>
+                    <label htmlFor="vacunaciones">Vacunaciones</label>
                     <InputText id="vacunaciones" value={product.vacunaciones} onChange={(e) => onInputChange(e, 'vacunaciones')} autoFocus className={classNames({ 'p-invalid': submitted && !product.vacunaciones })} />
                     {submitted && !product.vacunaciones && <small className="p-error">Name is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="monotributo">monotributo</label>
+                    <label htmlFor="monotributo">Monotributo</label>
                     <InputText id="monotributo" value={product.monotributo} onChange={(e) => onInputChange(e, 'monotributo')} autoFocus className={classNames({ 'p-invalid': submitted && !product.monotributo })} />
                     {submitted && !product.monotributo && <small className="p-error">monotributo is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="fechaInicio">fechaInicio</label>
+                    <label htmlFor="fechaInicio">Fecha de inicio</label>
                     <InputText type='date' id="fechaInicio" placeholder={product.fechaInicio} value={product.fechaInicio} onChange={(e) => onInputChange(e, 'fechaInicio')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaInicio })} />
                     {submitted && !product.fechaInicio && <small className="p-error">fechaInicio is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="fechaFinal">fechaFinal</label>
+                    <label htmlFor="fechaFinal">Fecha de finalizacion</label>
                     <InputText type='date' id="fechaFinal" placeholder={product.fechaFinal} value={product.fechaFinal} onChange={(e) => onInputChange(e, 'fechaFinal')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaFinal })} />
                     {submitted && !product.fechaFinal && <small className="p-error">fechaFinal is required.</small>}
                 </div>
                 <div className="field">
-                    <label htmlFor="notasVarias">notasVarias</label>
+                    <label htmlFor="notasVarias">Notas varias</label>
                     <InputTextarea id="notasVarias" value={product.notasVarias} onChange={(e) => onInputChange(e, 'notasVarias')} rows={3} cols={20} />
                 </div>
                 <div className="valor">
-                    <label htmlFor="valor">valor</label>
+                    <label htmlFor="valor">Valor</label>
                     <InputText id="valor" value={product.valor} onChange={(e) => onInputChange(e, 'valor')} rows={3} cols={20} />
                 </div>
 
@@ -476,7 +476,7 @@ export default function DataTableCrudDemo() {
                     </div>
                 </div>
  */}
-               
+
             </Dialog>
 
             <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>

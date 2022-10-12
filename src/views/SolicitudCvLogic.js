@@ -6,7 +6,7 @@ import '../assets/Form.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import '../assets/FileUpload.css'
+import '../assets/CvUpload.css'
 import { CitiesService } from '../services/CitiesService';
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
@@ -15,6 +15,7 @@ import { classNames } from 'primereact/utils';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import PrivateNavbar from './PrivateNavbar'
 
 
 
@@ -72,11 +73,24 @@ export default function ReactFinalFormDemo() {
         setFormData(file);
         setFormData(data);
 
+        return <PrivateNavbar cvEnviado={apiResponse}/>
+
 
 
         /*    console.log('del submit', formData) */
-/*         form.restart(); */
+        /*         form.restart(); */
     };
+
+
+
+    useEffect(function () {
+
+        if (apiResponse === true) {
+            window.location.reload()
+        }
+
+    }, [apiResponse]);
+
 
     useEffect(function () {
         countryservice.getCountries().then(data => setCountries(data));
@@ -227,7 +241,7 @@ export default function ReactFinalFormDemo() {
                                 <div className="field">
                                     <span className="p-float-label">
 
-                                        <label htmlFor="fichero" className="circle"> </label>
+                                        <label htmlFor="fichero" className="labelInputCv"> </label>
                                         <input id="fichero" onChange={selectedHandler} className="form-control" type="file" name='file' autoFocus />
 
                                     </span>
@@ -244,7 +258,7 @@ export default function ReactFinalFormDemo() {
                                 </div>
                             )} />
 
-                            <Button type="submit" label="Submit" className="mt-2" />
+                            <Button type="submit" label="Enviar solicitud" className="mt-2" />
 
                         </form>
 

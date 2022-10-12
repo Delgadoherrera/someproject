@@ -1,4 +1,4 @@
-#root > div > div > div > div.form-demo > div > div > h5{
+#root>div>div>div>div.form-demo>div>div>h5 {
     margin-bottom: 30px;
 }
 
@@ -20,11 +20,15 @@
     text-transform: uppercase;
     width: auto;
     text-align: center;
-    content: "Adjunta tu cv.";
+    content: "Adjuntar archivo";
     border-radius: 10px;
-    margin-left: 20px;
+    margin: auto;
 }
 
+.p-fluid {
+    width: 30%;
+    margin: auto;
+}
 
 .formInput {
     width: 0.1px;
@@ -37,4 +41,9 @@
 
 .otraclase {
     margin-top: 25px;
+}
+
+.tituloFacturacion {
+    font-size: 40px;
+    text-align: center;
 }
