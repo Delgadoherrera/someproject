@@ -65,7 +65,7 @@ export default function MenubarDemo({ cvEnviado }) {
                     command: (event) => {
                         setState(event.item)
                     },
-                    icon: 'pi pi-fw pi-external-link'
+                    icon: 'pi pi-bell'
                 }
             ]
         },
@@ -127,7 +127,7 @@ export default function MenubarDemo({ cvEnviado }) {
                     icon: 'pi pi-fw pi-calendar-times',
                 }, {
                     label: 'Mis recibos',
-                    icon: 'pi pi-fw pi-calendar-times',
+                    icon: 'pi pi-file-o',
                     command: (event) => {
                         setState(event.item)
                     },
