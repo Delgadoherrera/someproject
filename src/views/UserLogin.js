@@ -2,7 +2,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-import '../assets/NavBar.css'
+
 import axios from 'axios'
 import { useAuthContext } from "../contexts/authContext"
 import React, { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ import { Password } from 'primereact/password';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
-import '../assets/Form.css'
+
 
 export default function ReactFinalFormDemo() {
     const { login } = useAuthContext();
@@ -108,7 +108,7 @@ export default function ReactFinalFormDemo() {
             </Dialog>
 
             <div className="flex justify-content-center">
-                <div className="card">
+                <div className="formLogin">
                     <h5 className="text-center">Register</h5>
                     <Form onSubmit={onSubmit} initialValues={{ email: '', password: '' }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">

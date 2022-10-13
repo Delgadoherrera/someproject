@@ -4,11 +4,9 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import '../assets/Form.css'
 import '../assets/FacturaUpload.css'
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import '../assets/FileUpload.css'
 import { classNames } from 'primereact/utils';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';

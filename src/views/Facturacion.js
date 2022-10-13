@@ -18,26 +18,15 @@ import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
-import NuevaFactura from './NuevaFactura'
 import axios from 'axios'
 import UploadFactura from './UploadFactura'
 import '../assets/FacturaUpload.css';
 
 
-export default function DataTableCrudDemo({ facturas, facturaId, formDataValues, facturaEnviada, dataValuesProducts }) {
-
+export default function DataTableCrudDemo({ facturaId, formDataValues, facturaEnviada, dataValuesProducts, datafromPaciente }) {
     let emptyProduct = {
         id: null,
-        /*        name: '',
-               image: null,
-               description: '',
-               category: null,
-               price: 0,
-               quantity: 0,
-               rating: 0,
-               inventoryStatus: 'INSTOCK' */
     };
-
     const [products, setProducts] = useState(null);
     const [productDialog, setProductDialog] = useState(false);
     const [deleteProductDialog, setDeleteProductDialog] = useState(false);
@@ -46,55 +35,47 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
-    const [finalData, setFinalData] = useState(null);
     const [uploadFacturaDialog, setUploadFacturaDialog] = useState(false)
-    const [allData, setAllData] = useState('')
+    const [facturas, setFacturas] = useState(null);
     const toast = useRef(null);
     const dt = useRef(null);
-    const productService = new ProductService();
+    const [toggle, setToggle] = useState(true)
+
 
     useEffect(() => {
-        setProducts(facturas);
-    }, [products, product, facturas]);
+        fetch(`http://localhost:4000/detallepaciente/${datafromPaciente.id}`).then(res => res.json()).then(d => setProducts(d.data));
+        fetch(`http://localhost:4000/paciente/facturacion/${datafromPaciente.id}`).then(res => res.json()).then(d => setFacturas(d.data));
+    }, [toggle, submitted, deleteProductDialog,]);
+
 
     useEffect(() => {
-        if (formDataValues !== undefined && formDataValues !== null) {
-
-        }
-    }, [formDataValues]);
-
-
+        setToggle(!toggle)
+        setProducts(product)
+    }, []);
 
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
         setProductDialog(true);
     }
-
     const hideDialog = () => {
         setSubmitted(false);
         setProductDialog(false);
         setUploadFacturaDialog(false)
     }
-
     const hideDeleteProductDialog = () => {
         setDeleteProductDialog(false);
     }
-
     const hideDeleteProductsDialog = () => {
         setDeleteProductsDialog(false);
     }
-    const cantSave = () => {
-        return <p> Cant save</p>
-    }
-
     const saveProduct = () => {
         setSubmitted(true);
-        let id = facturaId.id
+        let id = product.id
+        let pacienteId = datafromPaciente.id
 
-        /*  if (product.name.trim()) { */
-        let _products = [...products];
-        let _product = { ...product, id };
+        let _products = [...facturas];
+        let _product = { ...product, id, datafromPaciente };
 
         if (product.id) {
             const index = findIndexById(product.id);
@@ -118,33 +99,27 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
             _products.push(_product);
             toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
         }
-
         setProducts(_products);
         setProductDialog(false);
         setProduct(emptyProduct);
 
-        /* } */
+
+
     }
     const uploadFactura = (product) => {
         setProduct({ ...product });
         setUploadFacturaDialog(true);
-        /*      console.log('id del producto: ', product.id) */
-
     }
-
     const editProduct = (product) => {
         setProduct({ ...product });
-        /*      console.log('editando producto / Facturacion:', product) */
         setProductDialog(true);
     }
-
     const confirmDeleteProduct = (product) => {
         setProduct(product);
         setDeleteProductDialog(true);
     }
-
     const deleteProduct = () => {
-        let _products = products.filter(val => val.id !== product.id);
+        let _products = facturas.filter(val => val.id !== product.id);
         axios.post("http://localhost:4000/paciente/facturacion/destroy", product, {
         }).then((response) => {
             console.log('response Api:', response)
@@ -251,16 +226,16 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
         return (
             <React.Fragment>
                 <Button label="Nueva factura" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
-                <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
-            </React.Fragment>
+                {/*                 <Button label="Borrar" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
+ */}            </React.Fragment>
         )
     }
 
     const rightToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Import" className="mr-2 inline-block" onUpload={importCSV} />
-                <Button label="Export" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
+                <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Importar" className="mr-2 inline-block" onUpload={importCSV} />
+                <Button label="Exportar" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
             </React.Fragment>
         )
     }
@@ -280,7 +255,7 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
         return (
             <React.Fragment>
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-circle" className="p-button-rounded p-button-success mr-2" onClick={() => uploadFactura(rowData)} />
+                <Button icon="pi pi-camera" className="p-button-rounded p-button-success mr-2" onClick={() => uploadFactura(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
         );
@@ -306,11 +281,11 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
     const header = (
         <div className="table-header-pacientes">
-            {dataValuesProducts ? <h5 className="mx-0 my-1 tituloFacturacion"> Facturacion paciente: <span className='spanFacturacion'> {dataValuesProducts.nombre} {dataValuesProducts.apellido}</span></h5> : <h5 className="mx-0 my-1">Facturacion del paciente </h5>}
+            {products ? <h5 className="mx-0 my-1 tituloFacturacion"> Facturacion paciente: <span className='spanFacturacion'> {datafromPaciente.nombre} {datafromPaciente.apellido}</span></h5> : <h5 className="mx-0 my-1">Facturacion del paciente </h5>}
 
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
             </span>
         </div>
     );
@@ -375,26 +350,19 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
 
             <Dialog visible={productDialog} style={{ width: '450px' }} header="Crear factura" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog} >
                 {product.image && <img src={`images/product/${product.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.image} className="product-image block m-auto pb-3" />}
-                <div className="field">
-                    <InputText id="id" hidden value={product.id} onChange={(e) => onInputChange(e, 'id')} autoFocus className={classNames({ 'p-invalid': submitted && !product.id })} />
-                    {submitted && !product.id && <small className="p-error">id is required.</small>}
+                <div hidden hclassName="field">
+                    <InputText id="id" value={datafromPaciente.id} onChange={(e) => onInputChange(e, 'id')} autoFocus className={classNames({ 'p-invalid': submitted && !datafromPaciente.id })} />
+                    {submitted && !datafromPaciente.id && <small className="p-error">id is required.</small>}
                 </div>
 
                 <div className="field">
-                    <label htmlFor="numeroFactura">Numero de factura</label>
-                    <InputText id="numeroFactura" value={product.numeroFactura} onChange={(e) => onInputChange(e, 'numeroFactura')} autoFocus className={classNames({ 'p-invalid': submitted/*  && !product.numeroFactura */ })} />
-                    {/*  {submitted && !product.numeroFactura && <small className="p-error">numeroFactura is required.</small>} */}
+                    <label htmlFor="numeroFactura">numeroFactura</label>
+                    <InputText id="numeroFactura" value={product.numeroFactura} onChange={(e) => onInputChange(e, 'numeroFactura')} autoFocus className={classNames({ 'p-invalid': submitted && !product.numeroFactura })} />
+                    {submitted && !product.numeroFactura && <small className="p-error">numeroFactura is required.</small>}
                 </div>
-
-                {/*   <div className="field">
-                    <label htmlFor="idPaciente">Numero de factura</label>
-                    <InputText id="idPaciente" value={product.idPaciente} onChange={(e) => onInputChange(e, 'idPaciente')} autoFocus className={classNames({ 'p-invalid': submitted && !product.idPaciente })} />
-                    {submitted && !product.idPaciente && <small className="p-error">idPaciente is required.</small>}
-                </div> */}
-
                 <div className="field">
 
-                    {facturas ? <InputText id="idPaciente" hidden value={facturaId.id} onChange={(e) => onInputChange(e, 'idPaciente')} autoFocus className={classNames({ 'p-invalid': submitted })} /> : <p> no hay facturas</p>}
+                    {facturas ? <InputText id="idPaciente" hidden value={product.id} onChange={(e) => onInputChange(e, 'idPaciente')} autoFocus className={classNames({ 'p-invalid': submitted })} /> : <p> no hay facturas</p>}
                     {/* 
                     {submitted && !product.idPaciente && <small className="p-error">Name is required.</small>} */}
                 </div>
@@ -422,10 +390,12 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
             </Dialog>
 
             {facturaEnviada === true ? <p> enviando</p> : <p> </p>}
-            <Dialog visible={uploadFacturaDialog} style={{ width: '450px' }} header={` Nueva factura al paciente con ID: ${formDataValues}`} modal className="p-fluid" footer={subirFacturaDialog} onHide={hideDialog} >
+
+            {dataValuesProducts !== null ? <Dialog visible={uploadFacturaDialog} style={{ width: '450px' }} header={` Nueva factura paciente:  ${product.nombre} ${product.apellido}`} modal className="p-fluid" footer={subirFacturaDialog} onHide={hideDialog} >
                 <UploadFactura idValue={product.id} imagenFactura={product.imagenFactura} />
 
-            </Dialog>
+            </Dialog> : <p> Nueva facura a nombre de... </p>}
+
 
             <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
                 <div className="confirmation-content">
@@ -433,7 +403,6 @@ export default function DataTableCrudDemo({ facturas, facturaId, formDataValues,
                     {product && <span>Are you sure you want to delete <b>{product.name}</b>?</span>}
                 </div>
             </Dialog>
-
             <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
                 <div className="confirmation-content">
                     <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />

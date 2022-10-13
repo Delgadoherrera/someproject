@@ -1,4 +1,4 @@
-#root > div > div > div > div.form-demo > div > div > h5{
+#root>div>div>div>div.form-demo>div>div>h5 {
     margin-bottom: 30px;
 }
 
@@ -6,6 +6,7 @@
 #fichero {
     opacity: 0;
     width: 200px;
+
 }
 
 .labelInputCv::after {
@@ -22,17 +23,18 @@
     text-align: center;
     content: "Adjunta archivo";
     border-radius: 10px;
-    margin-left: 20px;
 
 }
-.aceptarButton{
-    margin-top: 25px;
+
+.aceptarButton {
     top: 15px;
+
 }
 
-.iframe{
-    width: 100%;
-    padding: 1%;
+.iframe {
+    width: 100% !important;
+    padding: 0% !important;
+    height: 50vh !important;
 }
 
 
@@ -48,18 +50,29 @@
 .otraclase {
     margin-top: 25px;
 }
-.facturacionHeader{
- 
-  /*   color: red !important */
-  padding: 1% !important;
+
+.facturacionHeader {
+
+    /*   color: red !important */
+    padding: 1% !important;
 }
 
-.spanFacturacion{
-    color:rgba(21, 68, 154, 0.674);
- 
+.spanFacturacion {
+    color: rgba(21, 68, 154, 0.674);
+
 }
 
 .tituloEvolucion {
     font-size: 40px;
     text-align: center;
+}
+
+.circle {
+    left: -35% !important;
+    margin-bottom: 100% !important;
+}
+
+.aceptarButton{
+    margin-bottom: 10% !important;
+    bottom: 100px !important;
 }

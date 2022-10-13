@@ -23,6 +23,7 @@
     content: "Adjuntar archivo";
     border-radius: 10px;
     margin: auto;
+    margin-bottom: 20px !important;
 }
 
 .p-fluid {
@@ -46,4 +47,8 @@
 .tituloFacturacion {
     font-size: 40px;
     text-align: center;
+}
+
+.aceptarButton{
+    top: 17% !important;
 }

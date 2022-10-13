@@ -1,4 +1,18 @@
-
-.contenedorServicios{
+.contenedorServicios {
     display: flex;
+    justify-content: center;
+    margin-top: 3%;
+
+}
+
+.p-button {
+
+
+}
+
+.p-card-footer {
+
+    display: flex;
+    justify-content: baseline;
+   
 }

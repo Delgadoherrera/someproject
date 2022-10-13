@@ -145,7 +145,7 @@ export default function ReactFinalFormDemo() {
       </Dialog>
 
       <div className="flex justify-content-center">
-        <div className="cardRegister">
+        <div className="formRegister">
           <h5 className="text-center">Registrate</h5>
           <Form onSubmit={onSubmit} initialValues={{ name: '', email: '', password: '', date: null, apellido:'', telefono:'', country: null, accept: false }} validate={validate} render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit} className="p-fluid">

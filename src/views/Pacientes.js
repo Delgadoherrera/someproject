@@ -3,7 +3,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import React, { useState, useEffect, useRef, } from 'react';
-import { Link, redirect } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll';
 import { classNames } from 'primereact/utils';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -14,17 +14,20 @@ import { FileUpload } from 'primereact/fileupload';
 import { Rating } from 'primereact/rating';
 import { Toolbar } from 'primereact/toolbar';
 import { InputTextarea } from 'primereact/inputtextarea';
-import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import axios from 'axios'
 import '../assets/Pacientes.css';
-import DetallePaciente from './DetallePaciente'
+import Facturacion from './Facturacion'
 import PrivateNavbar from './PrivateNavbar'
 import EvolucionPaciente from './EvolucionPaciente'
-export default function DataTableCrudDemo() {
 
+
+
+
+
+export default function DataTableCrudDemo({ successfull }) {
 
     let emptyProduct = {
         id: '',
@@ -42,12 +45,6 @@ export default function DataTableCrudDemo() {
         notasVarias: '',
         status: '',
         direccion: ''
-        /* image: null,
-        description: '',
-        category: null,
-         quantity: 0,
-        rating: 0,
-        inventoryStatus: 'INSTOCK' */
     };
     const [saved, setSaved] = useState(false);
     const [products, setProducts] = useState(null);
@@ -67,28 +64,11 @@ export default function DataTableCrudDemo() {
 
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
-        /*     console.log('useFxprimero') */
-
-
-    }, [saved]); // eslint-disable-line react-hooks/exhaustive-deps
-
-    console.log('productos primer usfx', product)
-
-
-
-    /* 
-        useEffect(() => {
-            console.log('Submited Fx')
-    
-    
-        }, [product]) */
+    }, [saved]);
 
     const formatCurrency = (value) => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
     }
-
-
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
@@ -115,33 +95,20 @@ export default function DataTableCrudDemo() {
             let _products = [...products];
             let _product = { ...product };
 
-
-
-
-
             if (product.id) {
                 const index = findIndexById(product.id);
-                /*     console.log(_product) */
-
                 axios.post("http://localhost:4000/pacientesList/edit", _product, {
                 }).then((response) => {
                     console.log('response Api:', response)
                 })
-
-
-
                 _products[index] = _product;
                 toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
             }
             else {
-                /*   console.log('aqui debe ir fetch') */
-
                 axios.post("http://localhost:4000/pacientesList/create", _product, {
                 }).then((response) => {
                     console.log('response Api:', response)
                 })
-
-
                 _product.id = createId();
                 _product.image = 'product-placeholder.svg';
                 _products.push(_product);
@@ -159,30 +126,21 @@ export default function DataTableCrudDemo() {
         setProduct({ ...product });
         setProductDialog(true);
     }
-
     const confirmDeleteProduct = (product) => {
         setProduct(product);
         setDeleteProductDialog(true);
-
     }
-
     const deleteProduct = () => {
         let _products = products.filter(val => val.id !== product.id,
             axios.post("http://localhost:4000/pacientesList/destroy", product, {
             }).then((response) => {
                 console.log('response Api:', response)
             }));
-        /*      console.log('delete product function', _products) */
         setProducts(_products);
-
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
-
-        /* 
-                console.log('eliminador de la derecha', _products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
     }
-
     const findIndexById = (id) => {
         let index = -1;
         for (let i = 0; i < products.length; i++) {
@@ -191,10 +149,8 @@ export default function DataTableCrudDemo() {
                 break;
             }
         }
-
         return index;
     }
-
     const createId = () => {
         let id = '';
         let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -203,18 +159,14 @@ export default function DataTableCrudDemo() {
         }
         return id;
     }
-
     const importCSV = (e) => {
         const file = e.files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
             const csv = e.target.result;
             const data = csv.split('\n');
-
-            // Prepare DataTable
             const cols = data[0].replace(/['"]+/g, '').split(',');
             data.shift();
-
             const importedData = data.map(d => {
                 d = d.split(',');
                 const processedData = cols.reduce((obj, c, i) => {
@@ -223,28 +175,21 @@ export default function DataTableCrudDemo() {
                     (c === 'precio' || c === 'rating') && (obj[c] = parseFloat(obj[c]));
                     return obj;
                 }, {});
-
                 processedData['id'] = createId();
                 return processedData;
             });
-
             const _products = [...products, ...importedData];
-
             setProducts(_products);
         };
-
         reader.readAsText(file, 'UTF-8');
     }
-
     const exportCSV = () => {
         dt.current.exportCSV();
     }
-
     const confirmDeleteSelected = () => {
         /*         console.log('delete derechos') */
         setDeleteProductsDialog(true);
     }
-
     const deleteSelectedProducts = () => {
         let _products = products.filter(val => !selectedProducts.includes(val));
         setProducts(_products);
@@ -253,13 +198,11 @@ export default function DataTableCrudDemo() {
         /*    console.log('productos:', products) */
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
     }
-
     const onCategoryChange = (e) => {
         let _product = { ...product };
         _product['category'] = e.value;
         setProduct(_product);
     }
-
     const onInputChange = (e, name) => {
         const val = (e.target && e.target.value) || '';
         let _product = { ...product };
@@ -267,7 +210,6 @@ export default function DataTableCrudDemo() {
 
         setProduct(_product);
     }
-
     const onInputNumberChange = (e, name) => {
         const val = e.value || 0;
         let _product = { ...product };
@@ -275,51 +217,40 @@ export default function DataTableCrudDemo() {
 
         setProduct(_product);
     }
-
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
 
                 <Button label="Alta paciente" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
-
-
-
                 {/*              <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} /> */}
             </React.Fragment>
         )
     }
-
     const rightToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Import" className="mr-2 inline-block" onUpload={importCSV} />
-                <Button label="Export" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
+                <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Importar" className="mr-2 inline-block" onUpload={importCSV} />
+                <Button label="Exportar" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
             </React.Fragment>
         )
     }
-
     const imageBodyTemplate = (rowData) => {
         return <img src={`images/product/${rowData.image}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={rowData.image} className="product-image" />
     }
-
     const precioBodyTemplate = (rowData) => {
         return formatCurrency(rowData.precio);
     }
-
     const ratingBodyTemplate = (rowData) => {
         return <Rating value={rowData.rating} readOnly cancel={false} />;
     }
-
     const statusBodyTemplate = (rowData) => {
         return <span className={`product-badge status-${rowData.inventoryStatus/* .toLowerCase() */}`}>{rowData.inventoryStatus}</span>;
     }
-
     const detallePaciente = (product) => {
         setProduct({ ...product });
         setdetalleProducto({ ...product });
         setToggle(!toggle)
     }
-
     const evolucionPaciente = (product) => {
         setProduct({ ...product });
         setdetalleProducto({ ...product });
@@ -342,9 +273,8 @@ export default function DataTableCrudDemo() {
             <h5 className="mx-0 my-1 tituloEvolucion"> <span>Gestion de pacientes </span></h5>
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
             </span>
-
         </div>
     );
 
@@ -367,40 +297,48 @@ export default function DataTableCrudDemo() {
         </React.Fragment>
     );
 
+    const togglear = () => {
+        setToggle(!toggle)
+
+    }
+
+    console.log('desde pacientes', successfull)
 
     return (
+
         <div className="datatable-crud-demo">
 
             <PrivateNavbar />
 
+
+
+
+
             <Toast ref={toast} />
+
+
+
 
             <div className="card">
 
+
+
+
                 <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-
-                {detalleProducto !== '' && toggle == ! false ? <DetallePaciente product={product} /> : <p> </p>}
-                {detalleProducto !== '' && toggle == ! false ? <EvolucionPaciente evolucionId={product.id} datosPaciente={product} /> : <p> </p>}
-
                 <DataTable ref={dt} value={products} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)}
                     dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                     globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-
                     <Column hidden field="id" header="id" sortable style={{ minWidth: '5rem' }}></Column>
-
                     <Column /* selectionMode="single" */ headerStyle={{ width: '1rem' }} exportable={false}></Column>
-                    <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }}>
-
-                    </Column>
-
+                    <Column field="nombre" header="Nombre del paciente" sortable style={{ minWidth: '5rem' }} />
                     <Column field="apellido" header="Apellido del paciente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="nombreFamiliar" header="Nombre del familiar" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="apellidoFamiliar" header="Apellido del familiar" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="telefono" header="Telefono" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="direccion" header="direccion" sortable style={{ minWidth: '5rem' }}></Column>
-                    <Column field="email" header="email" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="direccion" header="Direccion" sortable style={{ minWidth: '5rem' }}></Column>
+                    <Column field="email" header="Email" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="patologia" header="Patologia" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="asistente" header="Asistente" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="fechaInicio" header="Fecha de inicio" sortable style={{ minWidth: '5rem' }}></Column>
@@ -409,9 +347,15 @@ export default function DataTableCrudDemo() {
                     <Column field="precio" header="precio" body={precioBodyTemplate} sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="valores" header="valores" sortable style={{ minWidth: '5rem' }}></Column>
                     <Column field="status" header="status" sortable style={{ minWidth: '5rem' }}></Column>
-
                     <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '15rem' }}></Column>
                 </DataTable>
+                {detalleProducto !== '' && toggle == ! false ? <Facturacion onClick={scroll.scrollToBottom({ behaivor: 'smooth', top: 100, left: 0, delay: 1, duration: 40 })} datafromPaciente={product} /> : <p> </p>}
+
+                {toggle === true ? <i className='pi pi-caret-up toggleTouch' onClick={togglear} /> : <p></p>}
+                {detalleProducto !== '' && toggle == ! false ? <EvolucionPaciente evolucionId={product.id} datosPaciente={product} /> : <p> </p>}
+
+                {toggle === true ? <i className='pi pi-caret-up toggleTouch' onClick={togglear} /> : <p></p>}
+
             </div>
 
             <Dialog visible={productDialog} style={{ width: '450px' }} header="Alta de paciente" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
@@ -426,7 +370,6 @@ export default function DataTableCrudDemo() {
                     <InputText id="apellido" value={product.apellido} onChange={(e) => onInputChange(e, 'apellido')} autoFocus className={classNames({ 'p-invalid': submitted && !product.apellido })} />
                     {submitted && !product.apellido && <small className="p-error">apellido is required.</small>}
                 </div>
-
                 <div className="field">
                     <label htmlFor="nombreFamiliar">Nombre del familiar</label>
                     <InputText value={product.nombreFamiliar} id="nombreFamiliar" placeholder={product.nombreFamiliar} onChange={(e) => onInputChange(e, 'nombreFamiliar')} autoFocus className={classNames({ 'p-invalid': submitted && !product.nombreFamiliar })} />
@@ -456,15 +399,11 @@ export default function DataTableCrudDemo() {
                     <InputText id="patologia" value={product.patologia} onChange={(e) => onInputChange(e, 'patologia')} autoFocus className={classNames({ 'p-invalid': submitted && !product.patologia })} />
                     {submitted && !product.patologia && <small className="p-error">patologia is required.</small>}
                 </div>
-
-
                 <div className="field">
                     <label htmlFor="asistente">asistente</label>
                     <InputText id="asistente" value={product.asistente} onChange={(e) => onInputChange(e, 'asistente')} autoFocus className={classNames({ 'p-invalid': submitted && !product.asistente })} />
                     {submitted && !product.asistente && <small className="p-error">asistente is required.</small>}
                 </div>
-
-
                 <div className="field">
                     <label htmlFor="fechaInicio">fechaInicio</label>
                     <InputText type='date' id="fechaInicio" placeholder={product.fechaInicio} value={product.fechaInicio} onChange={(e) => onInputChange(e, 'fechaInicio')} autoFocus className={classNames({ 'p-invalid': submitted && !product.fechaInicio })} />
@@ -484,7 +423,6 @@ export default function DataTableCrudDemo() {
                     <InputText id="status" placeholder={product.status} value={product.status} onChange={(e) => onInputChange(e, 'status')} autoFocus className={classNames({ 'p-invalid': submitted && !product.status })} />
                     {submitted && !product.status && <small className="p-error">status is required.</small>}
                 </div>
-
                 <div className="formgrid grid">
                     <div className="field col">
                         <label htmlFor="precio">precio</label>
@@ -492,14 +430,12 @@ export default function DataTableCrudDemo() {
                     </div>
                 </div>
             </Dialog>
-
             <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
                 <div className="confirmation-content">
                     <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
                     {product && <span>Are you sure you want to delete <b>{product.name}</b>?</span>}
                 </div>
             </Dialog>
-
             <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
                 <div className="confirmation-content">
                     <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />

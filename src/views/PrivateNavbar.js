@@ -31,7 +31,7 @@ export default function MenubarDemo({ cvEnviado }) {
 
     useEffect(() => {
         console.log(cvEnviado)
-       
+
     }, [cvEnviado]);
 
 
@@ -39,7 +39,7 @@ export default function MenubarDemo({ cvEnviado }) {
     const items = [
         {
             label: 'Servicios',
-            icon: 'pi pi-heart-fill',
+       /*      icon: 'pi pi-heart-fill', */
             items: [
                 {
                     label: 'Corporativos',
@@ -47,23 +47,7 @@ export default function MenubarDemo({ cvEnviado }) {
                     command: (event) => {
                         setState(event.item)
                     },
-                    /*   items: [
-                          {
-                              label: 'Centros de rehabilitacion',
-                              command: (event) => {
-                                  setState(event.item)
-                              },
-                              icon: 'pi pi-fw pi-bookmark'
-                          },
-                          {
-                              label: 'Obras sociales / Prepagas',
-                              command: (event) => {
-                                  setState(event.item)
-                              },
-                              icon: 'pi pi-fw pi-video'
-                          },
-  
-                      ] */
+
                 },
                 {
                     label: 'Particulares',
@@ -71,72 +55,6 @@ export default function MenubarDemo({ cvEnviado }) {
                     command: (event) => {
                         setState(event.item)
                     },
-                    /*   items: [
-                          {
-                              label: 'Internacion domiciliaria',
-                              items: [
-                                  {
-                                      label: 'Pediatria',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Adultos mayores',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Cuidados paliativos',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Rehabilitacion',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  }
-                              ],
-                          },
-                          {
-                              label: 'Servicios',
-                              items: [
-                                  {
-                                      label: 'Test a domiclio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Vacunacion a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Enfermeria a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Kinesiologia a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                                  {
-                                      label: 'Medico a domicilio',
-                                      command: (event) => {
-                                          setState(event.item)
-                                      },
-                                  },
-                              ]
-                          },
-                      ] */
 
                 },
                 {
@@ -157,12 +75,12 @@ export default function MenubarDemo({ cvEnviado }) {
             command: (event) => {
                 setState(event.item)
             },
-            icon: 'pi pi-tags',
+      /*       icon: 'pi pi-tags', */
 
         },
         {
             label: 'Trabaja con nosotros',
-            icon: 'pi pi-map-marker',
+    /*         icon: 'pi pi-map-marker', */
             items: [
                 {
                     label: 'Carga tu solicitud',
@@ -172,14 +90,7 @@ export default function MenubarDemo({ cvEnviado }) {
                     icon: 'pi pi-fw pi-user-plus',
 
                 },
-                /*             {
-                                label: 'Consultanos',
-                                command: (event) => {
-                                    setState(event.item)
-                                },
-                                icon: 'pi pi-fw pi-user-minus',
-            
-                            }, */
+
             ]
         },
 
@@ -187,7 +98,7 @@ export default function MenubarDemo({ cvEnviado }) {
 
 
             label: 'Contactanos',
-            icon: 'pi pi-pencil',
+        /*     icon: 'pi pi-pencil', */
             items: [
                 {
                     label: 'Whatsapp',
@@ -209,26 +120,10 @@ export default function MenubarDemo({ cvEnviado }) {
 
         {
             label: 'Gestiones administrativas',
-            icon: 'pi pi-user-edit ',
+/*             icon: 'pi pi-user-edit ', */
             items: [
-                /*   {
-                      label: 'Mis gestiones',
-                      command: (event) => {
-                          setState(event.item)
-                      },
-                      icon: 'pi pi-fw pi-pencil',
-                  },
-                  {
-                      label: 'Facturacion',
-                      icon: 'pi pi-fw pi-calendar-times',
-                      items: [
-                          {
-                              label: 'Cargar factura'
-                          }
-                      ]
-                  }, */
                 {
-                    label: 'Cargar historia clinica (Solo vista para el personal)',
+                    label: 'Cargar factura ',
                     icon: 'pi pi-fw pi-calendar-times',
                 }, {
                     label: 'Mis recibos',
@@ -240,13 +135,11 @@ export default function MenubarDemo({ cvEnviado }) {
             ]
         },
         {
-
-
             label: 'Cerrar Sesion',
             command: () => {
                 logout()
             },
-            icon: 'pi pi-fw pi-power-off'
+   /*          icon: 'pi pi-fw pi-power-off' */
         }
     ];
     const itemsAdmin = [
@@ -257,38 +150,25 @@ export default function MenubarDemo({ cvEnviado }) {
                 {
                     label: 'Pacientes',
                     url: '/private/pacientes',
-                    icon: 'pi pi-fw pi-pencil',
+                    icon: 'pi pi-user-minus',
                 },
                 {
                     label: 'Personal',
-                    icon: 'pi pi-fw pi-calendar-times',
+                    icon: 'pi pi-user',
                     url: '/private/personal',
-                    /*       command: (event) => {
-                              setState(event.item)
-                          }, */
-                    /*     items: [
-                            {
-                                label: 'Cargar factura'
-                            }
-                        ] */
                 },
                 {
                     label: 'Ver curriculums',
-                    icon: 'pi pi-fw pi-calendar-times',
+                    icon: 'pi pi-align-justify',
                     url: '/private/curriculums'
-                    /*  command: (event) => {
-                         setState(event.item)
-                     }, */
                 }, {
                     label: 'Mis recibos',
-                    icon: 'pi pi-fw pi-calendar-times',
+                    icon: 'pi pi-book',
                     url: '/private/recibos'
                 }
             ]
         },
         {
-
-
             label: 'Cerrar Sesion',
             command: () => {
                 logout()
@@ -300,16 +180,12 @@ export default function MenubarDemo({ cvEnviado }) {
     const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="mr-2"></img>;
     const end = <InputText placeholder="Search" type="text" />;
 
-
     return (
-
-
         < div >
             <div className="PrivateNavbar">
                 {localStorage.tipoUsuario === '2' ? <Menubar model={itemsAdmin} /* start={start} end={end} */ /> : <Menubar className='PrivateNavbar' model={items} /* start={start} end={end}  */ />}
 
             </div>
-
 
             {state.label === "Carga tu solicitud" ? <SolicitudCv /> : <p>  </p>}
             {state.label === "Pacientes" ? <Pacientes /> : <p>  </p>}

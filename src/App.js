@@ -9,7 +9,6 @@ import Logout from './views/Logout'
 import Private from './views/Private'
 import UserRegister from './views/UserRegister';
 import UserLogin from './views/UserLogin'
-import DetallePaciente from './views/DetallePaciente'
 import Pacientes from './views/Pacientes'
 import Personal from './views/Personal'
 import Curriculums from './views/Curriculums'

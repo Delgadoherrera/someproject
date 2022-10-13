@@ -1,48 +1,66 @@
-
 .datatable-crud-demo .table-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 @media screen and (max-width: 960px) {
     .datatable-crud-demo .table-header {
         align-items: flex-start;
     }
 }
+
 .datatable-crud-demo .product-image {
     width: 100px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 3px 6px rgba(224, 123, 123, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+
 .datatable-crud-demo .p-dialog .product-image {
     width: 150px;
     margin: 0 auto 2rem auto;
     display: block;
 }
+
 .datatable-crud-demo .confirmation-content {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 @media screen and (max-width: 960px) {
     .datatable-crud-demo .p-toolbar {
         flex-wrap: wrap;
     }
+
     .datatable-crud-demo .p-toolbar .p-button {
         margin-bottom: 0.25rem;
     }
+
     .datatable-crud-demo .table-header {
         flex-direction: column;
     }
-    .datatable-crud-demo .table-header .p-input-icon-left, .datatable-crud-demo .table-header input {
+
+    .datatable-crud-demo .table-header .p-input-icon-left,
+    .datatable-crud-demo .table-header input {
         width: 100%;
     }
 }
 
-.tituloEvolucion{
+.tituloEvolucion {
     font-size: 40px;
     text-align: center;
 }
-.spanEvolucion{
-    color:rgba(21, 68, 154, 0.674);
+
+.spanEvolucion {
+    color: rgba(21, 68, 154, 0.674);
 }
 
+ .toggleTouch {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.329);
+    margin-left: 98%;
+
+ /*    margin-left: 50%;
+    position: fixed;
+    z-index: 3; */
+} 
